@@ -7,7 +7,7 @@
 	export let Status: number = 0;
 	export let Message: string = 'Unknown';
 	export let SubText: string = 'Unknown Error!';
-	export let Button: ButtonInt | null;
+	export let Button: ButtonInt | null = null;
 </script>
 
 <section class="flex items-center h-full p-16">

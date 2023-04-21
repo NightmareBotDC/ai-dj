@@ -105,11 +105,11 @@
 			</div>
 			<div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 				<div class="flex flex-shrink-0 items-center">
-					<img class="block h-8 w-auto rounded-md lg:hidden" src="/logo.png" alt="Azidoazide" />
+					<img class="block h-8 w-auto rounded-md lg:hidden" src="/logo.png" alt="AzidoPanel" />
 
-					<img class="hidden h-8 w-auto rounded-md lg:block" src="/logo.png" alt="Azidoazide" />
+					<img class="hidden h-8 w-auto rounded-md lg:block" src="/logo.png" alt="AzidoPanel" />
 
-					<h2 class="pl-2 text-white font-bold">Azidoazide</h2>
+					<h2 class="pl-2 text-white font-bold">AzidoPanel</h2>
 				</div>
 				<div class="hidden sm:ml-6 sm:block">
 					<div class="flex space-x-4">

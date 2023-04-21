@@ -6,7 +6,7 @@
 
 	export let Title: string;
 	export let Desc: string;
-	export let Button: ButtonType | null;
+	export let Button: ButtonType | null = null;
 </script>
 
 <div
