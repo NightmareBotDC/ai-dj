@@ -1,4 +1,8 @@
-<div id="preview" class="m-4 p-15">
+<script lang="ts">
+	export let data: any;
+</script>
+
+<div id="about" class="m-4 p-15">
 	<h2 class="text-2xl text-white font-bold">AzidoDJ</h2>
 	<p
 		class="bg-gradient-to-r from-teal-400 to-yellow-200 text-lg font-sans font-bold tracking-normal text-transparent bg-clip-text inline-block"
@@ -11,3 +15,13 @@
 		>!
 	</p>
 </div>
+
+{#if data.user}
+	<h1>Logged in!</h1>
+{:else}
+	<div id="prompt_login" class="m-4 p-15">
+		<button class="block p-3 bg-white text-spotify font-extrabold rounded-md"
+			>Login with Spotify</button
+		>
+	</div>
+{/if}
