@@ -20,7 +20,10 @@
 	<h1>Logged in!</h1>
 {:else}
 	<div id="prompt_login" class="m-4 p-15">
-		<button class="block p-3 bg-white text-spotify font-extrabold rounded-md"
+                <h2 class="text-base text-white font-bold">To use AzidoDJ, you must login with <a href="https://spotify.com/" class="text-spotify font-extrabold hover:underline"
+			>Spotify</a
+		>!</h2>
+		<button class="block p-2 bg-spotify text-white font-extrabold inline-block rounded-md"
 			>Login with Spotify</button
 		>
 	</div>
