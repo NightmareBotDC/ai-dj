@@ -16,15 +16,12 @@
 	</p>
 </div>
 
+<div class="p-2"></div>
+
 {#if data.user}
 	<h1>Logged in!</h1>
 {:else}
 	<div id="prompt_login" class="m-4 p-15">
-                <h2 class="text-base text-white font-bold">To use AzidoDJ, you must login with <a href="https://spotify.com/" class="text-spotify font-extrabold hover:underline"
-			>Spotify</a
-		>!</h2>
-		<button class="block p-2 bg-spotify text-white font-extrabold inline-block rounded-md"
-			>Login with Spotify</button
-		>
+            <h2>You are NOT logged in.</h2>
 	</div>
 {/if}
