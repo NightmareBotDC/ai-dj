@@ -32,9 +32,9 @@
 
 {#if data.user}
         {#if data.user.Connections.find((e) => e.service === "Spotify")}
-           <h1 class="text-white font-bold">Welcome back, {data.user.Username}. Your Spotify account is already linked!</h1>
+           <h1 class="text-white font-bold m-4">Welcome back, {data.user.Username}. Your Spotify account is already linked!</h1>
         {:else}
-	   <h1 class="text-white font-bold">Hello, {data.user.Username}. It seems you don't have a Spotify account linked with your Azidoazide profile. Please go to <span class="text-spotify font-bold">Link Account</span> to start using AzidoDJ today!</h1>
+	   <h1 class="text-white font-bold m-4">Hello, {data.user.Username}. It seems you don't have a Spotify account linked with your Azidoazide profile. Please go to <span class="text-spotify font-bold">Link Account</span> to start using AzidoDJ today!</h1>
         {/if}
 {:else}
 	<div id="prompt_login" class="m-4 p-15">
