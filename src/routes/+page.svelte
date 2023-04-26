@@ -22,9 +22,9 @@
 <div class="p-2" />
 
 {#if data.user}
-	<h1>Logged in!</h1>
+	<h1 class="text-white font-bold">Logged in!</h1>
 {:else}
 	<div id="prompt_login" class="m-4 p-15">
-		<h2>You are NOT logged in.</h2>
+		<h2 class="text-white font-bold">You are NOT logged in.</h2>
 	</div>
 {/if}
