@@ -14,7 +14,7 @@
 	};
 
 	const login = async () => {
-		window.location.href = 'https://api.azidoazide.xyz/auth/login?client_id=main-0091';
+		window.location.href = 'https://api.azidoazide.xyz/auth/login?client_id=azidodj-2294753900445';
 	};
 
 	const openMobileMenu = () => {
