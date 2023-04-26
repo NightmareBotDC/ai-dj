@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Meta from './components/Meta.svelte';
 
-	export let data: any;
+        export let data: any;
+
+        const accountConnected = (d) => { return data.user.Connections.find((i) => i.service === d); };
 </script>
 
 <Meta
@@ -31,8 +33,8 @@
 <div class="p-2" />
 
 {#if data.user}
-        {#if data.user.Connections.find((e) => e.service === "Spotify")}
-           <h1 class="text-white font-bold m-4">Welcome back, {data.user.Username}. Your Spotify account is already linked!</h1>
+        {#if accountConnected("Spotify") }
+           <h1 class="text-white font-bold m-4">Welcome back, {data.user.Username}! Your Spotify account is already linked to your Azidoazide profile. Start your enhanced music listening experience now!</h1>
         {:else}
 	   <h1 class="text-white font-bold m-4">Hello, {data.user.Username}. It seems you don't have a Spotify account linked with your Azidoazide profile. Please go to <span class="text-spotify font-bold">Link Account</span> to start using AzidoDJ today!</h1>
         {/if}
