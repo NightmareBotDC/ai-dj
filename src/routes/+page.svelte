@@ -1,6 +1,13 @@
 <script lang="ts">
+	import Meta from './components/Meta.svelte';
+
 	export let data: any;
 </script>
+
+<Meta
+	Title="AzidoDJ"
+	Description="AzidoDJ is a Artificial Intelligence based DJ experience that allows you to always be in the moment, with similar music you already listen to!"
+/>
 
 <div id="about" class="m-4 p-15">
 	<div class="flex">

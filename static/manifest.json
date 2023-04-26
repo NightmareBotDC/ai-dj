@@ -1,0 +1,31 @@
+{
+	"background_color": "#ff914d",
+	"description": "AzidoDJ is a Artificial Intelligence based DJ experience that allows you to always be in the moment, with similar music you already listen to!",
+	"dir": "auto",
+	"display": "standalone",
+	"name": "AzidoDJ by Azidoazide",
+	"orientation": "portrait-primary",
+	"scope": "/",
+	"short_name": "AzidoDJ",
+	"start_url": "/?source=pwa",
+	"id": "/?source=pwa",
+	"theme_color": "#3c3c3c",
+	"categories": ["entertainment", "utilities", "social"],
+	"display_override": ["window-control-overlay", "minimal-ui"],
+	"screenshots": [],
+	"icons": [
+		{
+			"src": "/logo.png",
+			"type": "image/png",
+			"sizes": "220x220"
+		},
+		{
+			"src": "/logo_512x512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"shortcuts": [],
+	"lang": "en",
+	"prefer_related_applications": false
+}
