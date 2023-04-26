@@ -4,7 +4,7 @@
 
 <div id="about" class="m-4 p-15">
     <div class="flex">
-        <img src="/logo.png" class="h-8 w-8 rounded-lg" alt="AzidoDJ" />
+        <img src="/logo.png" class="h-8 w-8 rounded-full" alt="AzidoDJ" />
 
 	    <h2 class="text-2xl text-white font-bold ml-2">AzidoDJ</h2>
     </div>
