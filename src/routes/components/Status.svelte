@@ -29,8 +29,8 @@
 				{/if}
 
 				{#if status.page.status === 'UNDERMAINTENANCE'}
-					<div class="p-2 bg-white rounded-lg" />
-					<h2 class="pl-2 text-white font-bold text-center">
+					<div class="p-2 bg-black rounded-lg" />
+					<h2 class="pl-2 text-black font-bold text-center">
 						Some services are under maintenance!
 					</h2>
 				{/if}
