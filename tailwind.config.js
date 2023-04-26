@@ -8,5 +8,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require('./plugins/dotted-bg')]
+	plugins: []
 };
