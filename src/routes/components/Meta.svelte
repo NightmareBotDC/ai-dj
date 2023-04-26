@@ -14,5 +14,5 @@
 	<meta name="og:description" content={Description} />
 	<meta name="theme-color" content="#3c3c3c" />
 	<meta name="apple-mobile-web-app-status-bar" content="#3c3c3c" />
-	<link rel="manifest" href="https://dj.azidoazide.xyz/manifest.json" />
+	<link rel="manifest" href="/manifest.json" />
 </svelte:head>
