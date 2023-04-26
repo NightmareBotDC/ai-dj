@@ -16,7 +16,7 @@
 
 {#if status && !status.error}
 	<center>
-		<div class="p-2 bg-gradient-to-r from-gray-700 via-gray-900 to-black inline-block rounded-md">
+		<div class="p-2 bg-gradient-to-r from-white via-gray-700 to-black inline-block rounded-md">
 			<div class="flex items-center justify-center">
 				{#if status.page.status === 'UP'}
 					<div class="p-2 bg-green-500 rounded-lg" />
