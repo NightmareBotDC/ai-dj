@@ -15,7 +15,7 @@
 		Welcome to your personalized Artificial Intelligence based Music DJ.
 	</p>
 	<p class="flex text-base text-white font-bold">
-		Powered by <img src="/Spotify_Logo.png" class="ml-2" height="20px" width="70px" />
+		Powered by <img src="/Spotify_Logo.png" class="ml-2" height="50px" width="80px" />
 	</p>
 </div>
 
