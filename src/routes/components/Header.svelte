@@ -5,7 +5,6 @@
 	const navigation = [{ name: 'Home', href: '/', current: true }];
 
 	const profileNavigation = [
-		{ name: 'Profile', href: '/profile' },
 		{ name: 'Logout', href: '/auth/logout' }
 	];
 
