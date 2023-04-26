@@ -4,9 +4,7 @@
 
 	const navigation = [{ name: 'Home', href: '/', current: true }];
 
-	const profileNavigation = [
-		{ name: 'Logout', href: '/auth/logout' }
-	];
+	const profileNavigation = [{ name: 'Logout', href: '/auth/logout' }];
 
 	const classNames = (...classes: any) => {
 		return classes.filter(Boolean).join(' ');

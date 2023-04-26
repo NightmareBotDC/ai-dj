@@ -3,7 +3,7 @@
 	import Status from './components/Status.svelte';
 	import TopAlert from './components/TopAlert.svelte';
 	import Header from './components/Header.svelte';
-        import { PUBLIC_ENVIRONMENT } from '$env/static/public';
+	import { PUBLIC_ENVIRONMENT } from '$env/static/public';
 
 	export let data: any;
 </script>

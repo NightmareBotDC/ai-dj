@@ -3,11 +3,11 @@
 </script>
 
 <div id="about" class="m-4 p-15">
-    <div class="flex">
-        <img src="/logo.png" class="h-8 w-8 rounded-full" alt="AzidoDJ" />
+	<div class="flex">
+		<img src="/logo.png" class="h-8 w-8 rounded-full" alt="AzidoDJ" />
 
-	    <h2 class="text-2xl text-white font-bold ml-2">AzidoDJ</h2>
-    </div>
+		<h2 class="text-2xl text-white font-bold ml-2">AzidoDJ</h2>
+	</div>
 
 	<p
 		class="bg-gradient-to-r from-teal-400 to-yellow-200 text-lg font-sans font-bold tracking-normal text-transparent bg-clip-text inline-block"
@@ -15,7 +15,9 @@
 		Welcome to your personalized Artificial Intelligence based Music DJ.
 	</p>
 	<p class="flex text-base text-white font-bold">
-		Powered by <a href="https://spotify.com/"><img src="/Spotify_Logo.png" class="ml-2" height="50px" width="80px" /></a>
+		Powered by <a href="https://spotify.com/">
+			<img src="/Spotify_Logo.png" class="ml-2" height="50px" width="80px" alt="Spotify" />
+		</a>
 	</p>
 </div>
 
