@@ -12,7 +12,7 @@
    
    setTimeout(() => {
       if (WS.connected) Loading = false;
-   }, 3000);
+   }, 2000);
 
    export let data: any;
 
