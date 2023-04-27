@@ -7,11 +7,11 @@
 
    onMount(() => {
       WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
-      console.log(WS.connected);
+      console.log(WS);
    });
    
    setTimeout(() => {
-      if (WS.connnected) Loading = true;
+      if (WS.connected) Loading = true;
       else return;
    }, 3000);
 
