@@ -11,8 +11,7 @@
    });
    
    setTimeout(() => {
-      if (WS.connected) Loading = true;
-      console.log(WS.connected);
+      if (WS.connected) Loading = false;
    }, 3000);
 
    export let data: any;
