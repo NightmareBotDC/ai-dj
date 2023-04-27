@@ -2,10 +2,15 @@
    import { io } from "socket.io-client";
    import { onMount } from "svelte";
 
-   let WS: any;
+   let Loading: Boolean = true;
+   let WS: any = null;
 
    onMount(() => {
-      WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
+      WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] }).then((i) => {
+         if (i.connected) Loading = false;
+         return i;
+      });
+
       console.log(WS);
    });
    
@@ -14,7 +19,7 @@
    const isAccountConnected = (p) => { return data.user.Connections.find((e) => e.service === p); };
 </script>
 
-{#if WS.connected === false}
+{#if Loading}
    <div id="loading" class="text-base text-white font-bold">
 <div class="text-center">
 	<p id="song">🎶</p>
