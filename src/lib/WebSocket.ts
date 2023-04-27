@@ -1,3 +1,3 @@
-import { io } from "socket.io-client/dist/socket.io.js";
+import { io } from "socket.io-client";
 
 export const Socket = io("wss://api.azidoazide.xyz");
