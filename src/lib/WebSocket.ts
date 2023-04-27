@@ -1,5 +1,5 @@
 import ioClient from "socket-io.client";
 
-const Socket = ioClient("https://api.azidoazide.xyz/");
+const Socket: any = ioClient("https://api.azidoazide.xyz/");
 
 export const io = Socket;
