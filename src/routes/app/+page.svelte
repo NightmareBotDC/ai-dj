@@ -2,8 +2,6 @@
    import { onMount } from "svelte";
 
    let Loading: Boolean = true;
-   import WS from "$lib/WebSocket";
-   if (WS.connected) Loading = false;
 
    export let data: any;
 
