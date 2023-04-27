@@ -7,7 +7,7 @@
 
    onMount(() => {
       WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
-      console.log(WS);
+      console.log(WS.connected);
    });
    
    setTimeout(() => {
