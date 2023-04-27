@@ -1,5 +1,5 @@
 <script lang="ts">
-   import { io } from "$lib/WebSocket";
+   import { Socket } from "$lib/WebSocket";
    import { onMount } from "svelte";
 
    let Loading: Boolean = true;
