@@ -3,13 +3,10 @@
    import { onMount } from "svelte";
 
    let WS: any;
-   let Loading: Boolean = true;
 
    onMount(() => {
       WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
       console.log(WS);
-
-      if (WS.connected) Loading = false;
    });
    
    export let data: any;
@@ -17,7 +14,7 @@
    const isAccountConnected = (p) => { return data.user.Connections.find((e) => e.service === p); };
 </script>
 
-{#if Loading}
+{#if WS.connected === false}
    <div id="loading" class="text-base text-white font-bold">
 <div class="text-center">
 	<p id="song">🎶</p>
