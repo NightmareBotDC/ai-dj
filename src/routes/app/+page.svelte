@@ -2,10 +2,11 @@
    import { io } from "socket.io-client";
    import { onMount } from "svelte";
 
+   let WS: any;
    let Loading: Boolean = true;
 
    onMount(() => {
-      let WS: any = io("wss://api.azidoazide.xyz");
+      WS = io("wss://api.azidoazide.xyz");
       if (WS.connected) Loading = false;
    });
    
