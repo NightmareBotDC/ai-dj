@@ -6,14 +6,15 @@
    let WS: any = null;
 
    onMount(() => {
-      WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] }).then((i) => {
-         if (i.connected) Loading = false;
-         return i;
-      });
-
+      WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
       console.log(WS);
    });
    
+   setTimeout(() => {
+      if (WS.connnected) Loading = true;
+      else return;
+   }, 3000);
+
    export let data: any;
 
    const isAccountConnected = (p) => { return data.user.Connections.find((e) => e.service === p); };
