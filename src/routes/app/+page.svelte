@@ -7,6 +7,8 @@
 
    onMount(() => {
       WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
+      console.log(WS);
+
       if (WS.connected) Loading = false;
    });
    
