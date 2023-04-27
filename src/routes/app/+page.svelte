@@ -1,7 +1,11 @@
 <script lang="ts">
+   import { io } from "socket.io-client";
    import { onMount } from "svelte";
 
+   let WS: any = io("wss://api.azidoazide.xyz");
+
    let Loading: Boolean = true;
+   if (WS.connected) Loading = false;
 
    export let data: any;
 
