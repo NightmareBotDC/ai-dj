@@ -1,8 +1,10 @@
 <script lang="ts">
-   import { Socket } from "$lib/WebSocket";
    import { onMount } from "svelte";
 
    let Loading: Boolean = true;
+   import { Socket } from "$lib/WebSocket";
+   if (Socket.connected) Loading = false;
+
    export let data: any;
 
    const isAccountConnected = (p) => { return data.user.Connections.find((e) => e.service === p); };
