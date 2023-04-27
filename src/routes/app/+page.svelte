@@ -6,7 +6,7 @@
    let Loading: Boolean = true;
 
    onMount(() => {
-      WS = io("wss://api.azidoazide.xyz");
+      WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
       if (WS.connected) Loading = false;
    });
    
