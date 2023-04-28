@@ -31,6 +31,27 @@
                            });
                         });
 
+                        WS.io.on("reconnect", (attempt) => {
+                           EventLogs = EventLogs.concat({
+                               type: "debug",
+                               description: `Reconnected to server. Attempt: #${attempt}`
+                           });
+                        });
+
+                        WS.io.on("reconnect_attempt", (attempt) => {
+                           EventLogs = EventLogs.concat({
+                               type: "debug",
+                               description: `Attempting to reconnect to server. Attempt: #${attempt}`
+                           });
+                        });
+
+                        WS.io.on("reconnect_error", (error) => {
+                           EventLogs = EventLogs.concat({
+                               type: "error",
+                               description: `Something went wrong with reconnecting to the server. Error: ${error}`
+                           });
+                        });
+
 			console.log(WS);
 		});
 
