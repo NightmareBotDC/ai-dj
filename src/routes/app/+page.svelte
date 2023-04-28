@@ -76,17 +76,8 @@
                                description: `Waiting for TTS voices to load.`
                            });
 
-                           speechSynthesis.addEventListener("voiceschanged", ev => {
-                               Loading = false;
-                               Voices = speechSynthesis.getVoices()
-
-                               EventLogs = EventLogs.concat({
-                                  type: "success",
-                                  description: `Loaded all available TTS voices.`
-                               });
-                           });
-
-                           new SpeechSynthesisUtterance("Welcome to your experience.")
+                           Loading = false;
+                           Voices = window.speechSynthesis.getVoices();
                         }
 		}, 2000);
 	}
