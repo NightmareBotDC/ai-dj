@@ -78,7 +78,7 @@
                            });
 
                            Loading = false;
-                           Speech = new SpeechSynthesisUtterance();
+                           Speech = new window.SpeechSynthesisUtterance();
                            Voices = window.speechSynthesis.getVoices();
 
                            Voices.forEach((voice) => {
