@@ -62,6 +62,13 @@
                            });
                         });
 
+                        Speech = new SpeechSynthesisUtterance();
+                        Voices = window.speechSynthesis.getVoices();
+
+                        Voices.forEach((voice) => {
+                            console.log(voice.name, voice.default ? voice.default :'');
+                        });
+
 			console.log(WS);
 		});
 
@@ -78,12 +85,6 @@
                            });
 
                            Loading = false;
-                           Speech = new window.SpeechSynthesisUtterance();
-                           Voices = window.speechSynthesis.getVoices();
-
-                           Voices.forEach((voice) => {
-                              console.log(voice.name, voice.default ? voice.default :'');
-                           });
                         }
 		}, 2000);
 	}
