@@ -69,9 +69,11 @@
                         if ("onvoiceschanged" in window.speechSynthesis) window.speechSynthesis.onvoiceschanged = loadVoices;
                         else loadVoices();
 
-                        Voices.forEach((voice) => {
-                            console.log(voice.name, voice.default ? voice.default :'');
-                        });
+                        setTimeout(() => {
+                           Voices.forEach((voice) => {
+                               console.log(voice.name, voice.default ? voice.default :'');
+                           });
+                        }, 2000);
 
 			console.log(WS);
 		});
