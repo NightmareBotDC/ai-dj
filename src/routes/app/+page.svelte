@@ -21,7 +21,7 @@
 		return data.user.Connections.find((e: any) => e.service === p);
 	};
 
-        const voicesPromise = new Promise((resolve) => {
+        let voicesPromise = new Promise((resolve) => {
             speechSynthesis.addEventListener("voiceschanged", ev => {
                resolve(speechSynthesis.getVoices())
             })
@@ -96,17 +96,17 @@
 		</div>
         {:else}
            <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience. We hope you enjoy your time here!</h1>
-	{/if}
+           
+           <div class="p-3"></div>
 
-        <div class="p-3"></div>
-
-        {#await voicesPromise then voices}
-           <ul>
-            {#each voices as voice}
-               <li>{voice.name} - {voice.lang}</li>
-            {/each}
-          </ul>
-        {/await}
+           {#await voicesPromise then voices}
+             <ul class="text-base font-bold text-white">
+              {#each voices as voice}
+                <li>{voice.name} - {voice.lang}</li>
+              {/each}
+            </ul>
+          {/await}
+       {/if}
 
         <div class="p-3"></div>
 
