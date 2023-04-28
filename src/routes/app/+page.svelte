@@ -5,7 +5,10 @@
 
 	let Loading: Boolean = true;
 	let WS: any = null;
-	let EventLogs: any = [];
+	let EventLogs: any = [{
+           type: "debug",
+           description: "Loading Experience..."
+        }];
 
 	export let data: any;
 
