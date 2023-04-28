@@ -85,6 +85,8 @@
                                   description: `Loaded all available TTS voices.`
                                });
                            });
+
+                           new SpeechSynthesisUtterance("Welcome to your experience.")
                         }
 		}, 2000);
 	}
