@@ -108,11 +108,11 @@
            <div class="p-3"></div>
 
            <ul>
-             {#each Voices as v, i}
+             {#each Voices as voice}
                <li>
                  <label>
-                    <input type="radio" value={i}>
-                    {v.name} - {v.lang}
+                    <input type="radio">
+                    {voice.name} - {voice.lang}
                  </label>
               </li>
             {/each}
