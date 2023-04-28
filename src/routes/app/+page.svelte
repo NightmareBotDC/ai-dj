@@ -108,7 +108,7 @@
            <div class="p-3"></div>
 
            <ul>
-             {#each voices as v, i}
+             {#each Voices as v, i}
                <li>
                  <label>
                     <input type="radio" bind:group={voiceIndex} value={i}>
