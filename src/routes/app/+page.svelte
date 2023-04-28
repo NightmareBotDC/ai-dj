@@ -115,6 +115,8 @@
 				}
 			</style>
 		</div>
+        {:else}
+          <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience.</h1>
 	{/if}
 
         <div class="p-3" />
