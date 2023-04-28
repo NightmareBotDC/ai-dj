@@ -21,6 +21,12 @@
 		return data.user.Connections.find((e: any) => e.service === p);
 	};
 
+        const voicesPromise = new Promise((resolve) => {
+            speechSynthesis.addEventListener("voiceschanged", ev => {
+               resolve(speechSynthesis.getVoices())
+            })
+        });
+
 	if (isAccountConnected('Spotify')) {
 		Loading = true;
 
@@ -91,6 +97,16 @@
         {:else}
            <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience. We hope you enjoy your time here!</h1>
 	{/if}
+
+        <div class="p-3"></div>
+
+        {#await voicesPromise then voices}
+           <ul>
+            {#each voices as voice}
+               <li>{voice.name} - {voice.lang}</li>
+            {/each}
+          </ul>
+        {/await}
 
         <div class="p-3"></div>
 
