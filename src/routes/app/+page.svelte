@@ -10,7 +10,10 @@
 
 	let Loading: Boolean = true;
 	let WS: any = null;
-	let EventLogs: Event = [];
+	let EventLogs: Event = [{
+          type: "success",
+          description: "Page Loaded. Connecting to server now!"
+        }];
 
 	export let data: any;
 
@@ -20,6 +23,11 @@
 
 	if (isAccountConnected('Spotify')) {
 		Loading = true;
+
+                EventLogs = EventLogs.concat({
+                   type: "success",
+                   description: "User authenticated, and Azidoazide account is linked with Spotify."
+                });
 
 		onMount(() => {
 			WS = io('wss://api.azidoazide.xyz', { transports: ['websocket'] });
