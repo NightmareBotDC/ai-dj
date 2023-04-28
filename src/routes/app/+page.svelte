@@ -92,7 +92,7 @@
 		<h1 class="text-base font-bold text-black">Event Log</h1>
 		<div class="p-2" />
 
-		<ol class="bg-gray-700 p-2 rounded-md">
+		<ol class="bg-gray-700 p-2 rounded-md overflow-scroll">
 			{#each EventLogs as event}
 				<li>
 					<div>
@@ -101,7 +101,7 @@
 					</div>
 				</li>
 
-                                <hr />
+                                <div class="p-2" />
 			{/each}
 		</ol>
 	</section>
