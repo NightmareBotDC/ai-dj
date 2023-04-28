@@ -100,9 +100,9 @@
            <div class="p-3"></div>
 
            {#await voicesPromise then voices}
-             <ul class="text-base font-bold text-white">
+             <ul>
               {#each voices as voice}
-                <li>{voice.name} - {voice.lang}</li>
+                <li class="text-base font-bold text-white">{voice.name} - {voice.lang}</li>
               {/each}
             </ul>
           {/await}
