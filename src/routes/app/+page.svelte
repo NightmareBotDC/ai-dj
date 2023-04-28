@@ -84,36 +84,9 @@
 {#if isAccountConnected('Spotify')}
 	{#if Loading}
 		<div id="loading" class="text-base text-white font-bold">
-			<div class="text-center">
-				<p id="song">🎶</p>
-			</div>
-
-			<div class="p-3"></div>
-
 			<p class="text-base text-white text-center font-bold">
 				Loading your personalized DJ experience...
 			</p>
-
-			<style>
-				#song {
-					animation: bobble 2s infinite;
-					font-size: 60px;
-					margin-top: 0;
-                                        color: "white";
-				}
-
-				@keyframes bobble {
-					0% {
-						transform: translateY(10px);
-					}
-					50% {
-						transform: translateY(40px);
-					}
-					100% {
-						transform: translateY(10px);
-					}
-				}
-			</style>
 		</div>
         {:else}
            <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience.</h1>
