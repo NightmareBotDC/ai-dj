@@ -89,7 +89,7 @@
 			</p>
 		</div>
         {:else}
-           <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience.</h1>
+           <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience. We hope you enjoy your time here!</h1>
 	{/if}
 
         <div class="p-3"></div>
