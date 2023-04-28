@@ -126,7 +126,7 @@
 
 				<li>
 					<div>
-						<h1 class="text-lg font-bold text-white">{event.type.toUpperCase()}</h1>
+						<h1 class="text-md font-bold text-white">{event.type.toUpperCase()}</h1>
 						<p class="text-base font-bold text-white">{event.description}</p>
 					</div>
 				</li>
