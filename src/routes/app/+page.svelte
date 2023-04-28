@@ -88,7 +88,7 @@
 				<p id="song">🎶</p>
 			</div>
 
-			<div class="p-3"></div>
+			<div class="pt-3"></div>
 
 			<p class="text-base text-white text-center font-bold">
 				Loading your personalized DJ experience...
@@ -116,10 +116,10 @@
 			</style>
 		</div>
         {:else}
-          <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience.</h1>
+           <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience.</h1>
 	{/if}
 
-        <div class="p-3" />
+        <div class="pt-3" />
 
 	<section class="bg-white rounded-md p-3" id="event_logs">
 		<h1 class="text-base font-bold text-black">Event Log</h1>
