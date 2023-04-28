@@ -63,8 +63,6 @@
                            });
                         });
 
-                        Speech = new SpeechSynthesisUtterance();
-                        
                         const loadVoices = () => {
                            Voices = Synth.getVoices();
                         };
