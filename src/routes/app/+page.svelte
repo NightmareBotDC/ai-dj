@@ -10,6 +10,7 @@
 
 	let Loading: Boolean = true;
 	let WS: any = null;
+        let Speech: any;
         let Voices: any;
 	let EventLogs: Event = [{
           type: "success",
@@ -77,6 +78,7 @@
                            });
 
                            Loading = false;
+                           Speech = new SpeechSynthesisUtterance();
                            Voices = window.speechSynthesis.getVoices();
                         }
 		}, 2000);
