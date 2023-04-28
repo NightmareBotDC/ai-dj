@@ -62,18 +62,20 @@
                            });
                         });
 
-                        const loadVoices = () => {
+                        /*const loadVoices = () => {
                            Voices = window.speechSynthesis.getVoices();
                         };
 
                         if ("onvoiceschanged" in window.speechSynthesis) window.speechSynthesis.onvoiceschanged = loadVoices;
-                        else loadVoices();
+                        else loadVoices();*/
 
-                        setTimeout(() => {
+                        console.log(window.speechSynthesis);
+
+                        /*setTimeout(() => {
                            Voices.forEach((voice) => {
                                console.log(voice.name, voice.default ? voice.default :'');
                            });
-                        }, 2000);
+                        }, 2000);*/
 
 			console.log(WS);
 		});
