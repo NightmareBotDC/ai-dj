@@ -10,7 +10,6 @@
 
 	let Loading: Boolean = true;
 	let WS: any = null;
-        let Synth: any = window.speechSynthesis;
         let Speech: any = null;
         let Voices: any = [];
 	let EventLogs: Event = [{
@@ -64,10 +63,10 @@
                         });
 
                         const loadVoices = () => {
-                           Voices = Synth.getVoices();
+                           Voices = window.speechSynthesis.getVoices();
                         };
 
-                        if ("onvoiceschanged" in Synth) Synth.onvoiceschanged = loadVoices;
+                        if ("onvoiceschanged" in window.speechSynthesis) window.speechSynthesis.onvoiceschanged = loadVoices;
                         else loadVoices();
 
                         Voices.forEach((voice) => {
