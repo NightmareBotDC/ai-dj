@@ -1,54 +1,100 @@
 <script lang="ts">
-   import { io } from "socket.io-client";
-   import { onMount } from "svelte";
+	import { io } from 'socket.io-client';
+	import { onMount } from 'svelte';
+	import Meta from '../components/Meta.svelte';
 
-   let Loading: Boolean = true;
-   let WS: any = null;
+	let Loading: Boolean = true;
+	let WS: any = null;
+	let EventLogs: any = [];
 
-   onMount(() => {
-      WS = io("wss://api.azidoazide.xyz", { transports: ['websocket'] });
-      console.log(WS);
-   });
-   
-   setTimeout(() => {
-      if (WS.connected) Loading = false;
-   }, 2000);
+	export let data: any;
 
-   export let data: any;
+	const isAccountConnected = (p: any) => {
+		return data.user.Connections.find((e: any) => e.service === p);
+	};
 
-   const isAccountConnected = (p) => { return data.user.Connections.find((e) => e.service === p); };
+	if (isAccountConnected('Spotify')) {
+		Loading = true;
+
+		onMount(() => {
+			WS = io('wss://api.azidoazide.xyz', { transports: ['websocket'] });
+
+			EventLogs.push({
+				type: 'debug',
+				description: 'Connecting to WebSocket.'
+			});
+
+			console.log(WS);
+		});
+
+		setTimeout(() => {
+			if (WS.connected) {
+				EventLogs.push({
+					type: 'success',
+					description: 'Connected to WebSocket.'
+				});
+
+				Loading = false;
+			}
+		}, 2000);
+	}
 </script>
 
-{#if Loading}
-   <div id="loading" class="text-base text-white font-bold">
-<div class="text-center">
-	<p id="song">🎶</p>
-</div>
+<Meta
+	Title="Your Experience - AzidoDJ"
+	Description="AzidoDJ is a Artificial Intelligence based DJ experience that allows you to always be in the moment, with similar music you already listen to!"
+/>
 
-<div class="p-5" />
+{#if isAccountConnected('Spotify')}
+	{#if Loading}
+		<div id="loading" class="text-base text-white font-bold">
+			<div class="text-center">
+				<p id="song">🎶</p>
+			</div>
 
-<p class="text-base text-white text-center font-bold">
-   Loading your personalized DJ experience...
-</p>
+			<div class="p-5" />
 
-<style>
-	#song {
-		animation: bobble 2s infinite;
-		font-size: 60px;
-		margin-top: 0;
-	}
+			<p class="text-base text-white text-center font-bold">
+				Loading your personalized DJ experience...
+			</p>
 
-	@keyframes bobble {
-		0% {
-			transform: translateY(10px);
-		}
-		50% {
-			transform: translateY(40px);
-		}
-		100% {
-			transform: translateY(10px);
-		}
-	}
-</style>
-   </div>
+			<style>
+				#song {
+					animation: bobble 2s infinite;
+					font-size: 60px;
+					margin-top: 0;
+				}
+
+				@keyframes bobble {
+					0% {
+						transform: translateY(10px);
+					}
+					50% {
+						transform: translateY(40px);
+					}
+					100% {
+						transform: translateY(10px);
+					}
+				}
+			</style>
+		</div>
+	{/if}
+
+	<section id="event_logs">
+		<h1 class="text-base font-bold text-white">Event Log</h1>
+		<div class="p-2" />
+
+		<ol>
+			{#each EventLogs as event}
+				<li>
+					<div>
+						<h1 class="text-lg font-bold text-white">{event.type.toUpperCase()}</h1>
+						<p class="text-base font-bold text-white">{event.description}</p>
+					</div>
+				</li>
+
+                <div class="p-2" />
+			{/each}
+		</ol>
+	</section>
 {/if}
