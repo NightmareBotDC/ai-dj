@@ -111,7 +111,7 @@
              {#each Voices as v, i}
                <li>
                  <label>
-                    <input type="radio" bind:group={voiceIndex} value={i}>
+                    <input type="radio" value={i}>
                     {v.name} - {v.lang}
                  </label>
               </li>
