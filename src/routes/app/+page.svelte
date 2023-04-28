@@ -31,13 +31,6 @@
                            });
                         });
 
-                        WS.io.on("ping", () => {
-                           EventLogs = EventLogs.concat({
-                                type: "ping",
-                                description: "Received ping from server."
-                           });
-                        });
-
 			console.log(WS);
 		});
 
