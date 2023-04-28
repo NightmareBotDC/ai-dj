@@ -10,6 +10,7 @@
 
 	let Loading: Boolean = true;
 	let WS: any = null;
+        let Voices: any;
 	let EventLogs: Event = [{
           type: "success",
           description: "Page Loaded. Connecting to server now!"
@@ -20,12 +21,6 @@
 	const isAccountConnected = (p: any) => {
 		return data.user.Connections.find((e: any) => e.service === p);
 	};
-
-        let voicesPromise = new Promise((resolve) => {
-            speechSynthesis.addEventListener("voiceschanged", ev => {
-               resolve(speechSynthesis.getVoices())
-            })
-        });
 
 	if (isAccountConnected('Spotify')) {
 		Loading = true;
@@ -76,7 +71,20 @@
                                description: `Connected to the server!`
                            });
 
-                           Loading = false;
+                           EventLogs = EventLogs.concat({
+                               type: "debug",
+                               description: `Waiting for TTS voices to load.`
+                           });
+
+                           speechSynthesis.addEventListener("voiceschanged", ev => {
+                               Loading = false;
+                               Voices = speechSynthesis.getVoices()
+
+                               EventLogs = EventLogs.concat({
+                                  type: "success",
+                                  description: `Loaded all available TTS voices.`
+                               });
+                           });
                         }
 		}, 2000);
 	}
@@ -99,13 +107,16 @@
            
            <div class="p-3"></div>
 
-           {#await voicesPromise then voices}
-             <ul>
-              {#each voices as voice}
-                <li class="text-base font-bold text-white">{voice.name} - {voice.lang}</li>
-              {/each}
-            </ul>
-          {/await}
+           <ul>
+             {#each voices as v, i}
+               <li>
+                 <label>
+                    <input type="radio" bind:group={voiceIndex} value={i}>
+                    {v.name} - {v.lang}
+                 </label>
+              </li>
+            {/each}
+          </ul>
        {/if}
 
         <div class="p-3"></div>
