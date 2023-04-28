@@ -99,7 +99,7 @@
 					animation: bobble 2s infinite;
 					font-size: 60px;
 					margin-top: 0;
-                                        text-color: "white";
+                                        color: "white";
 				}
 
 				@keyframes bobble {
@@ -116,6 +116,8 @@
 			</style>
 		</div>
 	{/if}
+
+        <div class="p-3" />
 
 	<section class="bg-white rounded-md p-3" id="event_logs">
 		<h1 class="text-base font-bold text-black">Event Log</h1>
