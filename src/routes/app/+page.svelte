@@ -3,9 +3,14 @@
 	import { onMount } from 'svelte';
 	import Meta from '../components/Meta.svelte';
 
+        interface Event {
+          type: String,
+          description: String
+        }
+
 	let Loading: Boolean = true;
 	let WS: any = null;
-	let EventLogs: any = [{
+	let EventLogs: Event = [{
            type: "debug",
            description: "Loading Experience..."
         }];
@@ -96,7 +101,7 @@
 					</div>
 				</li>
 
-                <div class="p-2" />
+                                <div class="p-2" />
 			{/each}
 		</ol>
 	</section>
