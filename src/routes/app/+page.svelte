@@ -10,8 +10,9 @@
 
 	let Loading: Boolean = true;
 	let WS: any = null;
-        let Speech: any;
-        let Voices: any;
+        let Synth: any = window.speechSynthesis;
+        let Speech: any = null;
+        let Voices: any = [];
 	let EventLogs: Event = [{
           type: "success",
           description: "Page Loaded. Connecting to server now!"
@@ -63,7 +64,13 @@
                         });
 
                         Speech = new SpeechSynthesisUtterance();
-                        Voices = window.speechSynthesis.getVoices();
+                        
+                        const loadVoices = () => {
+                           Voices = Synth.getVoices();
+                        };
+
+                        if ("onvoiceschanged" in Synth) Synth.onvoiceschanged = loadVoices;
+                        else loadVoices();
 
                         Voices.forEach((voice) => {
                             console.log(voice.name, voice.default ? voice.default :'');
