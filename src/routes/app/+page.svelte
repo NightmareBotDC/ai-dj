@@ -88,7 +88,7 @@
 				<p id="song">🎶</p>
 			</div>
 
-			<div class="p-5" />
+			<div class="p-3" />
 
 			<p class="text-base text-white text-center font-bold">
 				Loading your personalized DJ experience...
@@ -99,6 +99,7 @@
 					animation: bobble 2s infinite;
 					font-size: 60px;
 					margin-top: 0;
+                                        text-color: "white";
 				}
 
 				@keyframes bobble {
