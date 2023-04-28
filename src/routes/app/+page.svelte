@@ -120,7 +120,7 @@
 		<h1 class="text-base font-bold text-black">Event Log</h1>
 		<div class="p-2" />
 
-		<ol class="bg-gray-700 p-2 rounded-md h-25 overflow-y-auto">
+		<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
 			{#each EventLogs as event}
                                 <div class="p-1" />
 
