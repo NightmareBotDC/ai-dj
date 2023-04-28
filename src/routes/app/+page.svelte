@@ -10,10 +10,7 @@
 
 	let Loading: Boolean = true;
 	let WS: any = null;
-	let EventLogs: Event = [{
-           type: "debug",
-           description: "Loading Experience..."
-        }];
+	let EventLogs: Event = [];
 
 	export let data: any;
 
@@ -27,23 +24,25 @@
 		onMount(() => {
 			WS = io('wss://api.azidoazide.xyz', { transports: ['websocket'] });
 
-			EventLogs = EventLogs.concat({
-				type: 'debug',
-				description: 'Connecting to WebSocket.'
-			});
+                        WS.io.on("error", (error) => {
+                           EventLogs = EventLogs.concat({
+                               type: "error",
+                               description: error
+                           });
+                        });
+
+                        WS.io.on("ping", () => {
+                           EventLogs = EventLogs.concat({
+                                type: "ping",
+                                description: "Received ping from server."
+                           });
+                        });
 
 			console.log(WS);
 		});
 
 		setTimeout(() => {
-			if (WS.connected) {
-				EventLogs = EventLogs.concat({
-					type: 'success',
-					description: 'Connected to WebSocket.'
-				});
-
-				Loading = false;
-			}
+			if (WS.connected) Loading = false;
 		}, 2000);
 	}
 </script>
