@@ -27,7 +27,7 @@
 		onMount(() => {
 			WS = io('wss://api.azidoazide.xyz', { transports: ['websocket'] });
 
-			EventLogs.push({
+			EventLogs.concat({
 				type: 'debug',
 				description: 'Connecting to WebSocket.'
 			});
@@ -37,7 +37,7 @@
 
 		setTimeout(() => {
 			if (WS.connected) {
-				EventLogs.push({
+				EventLogs.concat({
 					type: 'success',
 					description: 'Connected to WebSocket.'
 				});
