@@ -88,11 +88,11 @@
 		</div>
 	{/if}
 
-	<section id="event_logs">
-		<h1 class="text-base font-bold text-white">Event Log</h1>
+	<section class="bg-white rounded-md p-4" id="event_logs">
+		<h1 class="text-base font-bold text-black">Event Log</h1>
 		<div class="p-2" />
 
-		<ol>
+		<ol class="bg-gray-700 p-2">
 			{#each EventLogs as event}
 				<li>
 					<div>
