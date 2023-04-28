@@ -114,14 +114,14 @@
 
 		<ol class="bg-gray-700 p-2 rounded-md overflow-scroll">
 			{#each EventLogs as event}
+                                <div class="p-1" />
+
 				<li>
 					<div>
 						<h1 class="text-lg font-bold text-white">{event.type.toUpperCase()}</h1>
 						<p class="text-base font-bold text-white">{event.description}</p>
 					</div>
 				</li>
-
-                                <div class="p-1" />
 			{/each}
 		</ol>
 	</section>
