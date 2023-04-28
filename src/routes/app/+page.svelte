@@ -56,7 +56,14 @@
 		});
 
 		setTimeout(() => {
-			if (WS.connected) Loading = false;
+			if (WS.connected) {
+                           EventLogs = EventLogs.concat({
+                               type: "success",
+                               description: `Connected to the server!`
+                           });
+
+                           Loading = false;
+                        }
 		}, 2000);
 	}
 </script>
