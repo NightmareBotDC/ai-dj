@@ -88,7 +88,7 @@
 				<p id="song">🎶</p>
 			</div>
 
-			<div class="p-3" />
+			<div class="p-3"></div>
 
 			<p class="text-base text-white text-center font-bold">
 				Loading your personalized DJ experience...
@@ -121,7 +121,7 @@
 
 	<section class="bg-white rounded-md p-3" id="event_logs">
 		<h1 class="text-base font-bold text-black">Event Log</h1>
-		<div class="p-2" />
+		<div class="p-2"></div>
 
 		<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
 			{#each EventLogs as event}
