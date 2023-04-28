@@ -80,6 +80,10 @@
                            Loading = false;
                            Speech = new SpeechSynthesisUtterance();
                            Voices = window.speechSynthesis.getVoices();
+
+                           Voices.forEach((voice) => {
+                              console.log(voice.name, voice.default ? voice.default :'');
+                           });
                         }
 		}, 2000);
 	}
