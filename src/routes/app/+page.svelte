@@ -137,11 +137,12 @@
 					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} [{SelectedVoice.lang}]
 				</p>
                                 <p class="text-sm font-semibold text-gray-700">
-					Voices: {Voices.length}
-				</p>
-                                <p class="text-sm font-semibold text-gray-700">
 					Settings: Pitch ({Pitch}) | Rate ({Rate})
 				</p>
+                                <p class="text-sm font-semibold text-gray-700">
+					Voices: {Voices.length}
+				</p>
+
 				<div class="p-2" />
 
 				<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
