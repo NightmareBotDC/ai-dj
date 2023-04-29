@@ -76,7 +76,7 @@
 
                 Voices = [
 					{
-						error: 'Speech Synthesis is compatible with your browser/device.'
+						error: JSON.stringify(Speech)
 					}
 				];
 			} else {
