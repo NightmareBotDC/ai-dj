@@ -136,7 +136,7 @@
 			<section class="bg-white rounded-md p-3" id="voices">
 				<h1 class="text-base font-bold text-black">Available Voices</h1>
 				<p class="text-sm font-semibold text-gray-700">
-					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} [{SelectedVoice.lang}] {SelectedVoice.default ? "(Default)" : ""}
+					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} {SelectedVoice.default ? "(Default)" : ""}
 				</p>
                                 <p class="text-sm font-semibold text-gray-700">
 					Settings: Pitch ({Pitch}) | Rate ({Rate})
@@ -163,7 +163,7 @@
 										bind:group={SelectedVoiceIndex}
 										value={n}
 									/>
-									{n + 1}. {i.name} [{i.lang}] {i.default ? "(Default)" : ""}
+									{n + 1}. {i.name} {i.default ? "(Default)" : ""}
 								</label>
 							</li>
 						{/if}
