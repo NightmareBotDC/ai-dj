@@ -83,8 +83,8 @@
 
 				const loadVoices = () => {
 					Voices = Speech.getVoices();
-					SelectedVoiceIndex = 0;
-					SelectedVoice = Voices[SelectedVoiceIndex];
+					SelectedVoiceIndex = Voices.findIndex((voice) => voice.default === true);
+					SelectedVoice = Voices.find((voice) => voice.default === true);
 				};
 
 				if ('onvoiceschanged' in Speech) {
