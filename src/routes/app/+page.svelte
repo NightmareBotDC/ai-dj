@@ -12,7 +12,9 @@
 	let WS: any = null;
 	let Speech: any = null;
 	let Voices: any = [];
-	let SelectedVoice: any = null;
+	let SelectedVoiceIndex: any = null;
+        $: SelectedVoice = Voices[SelectedVoiceIndex];
+
 	let EventLogs: Event[] = [
 		{
 			type: 'success',
@@ -136,7 +138,7 @@
 						{:else}
 							<li>
 								<label class="text-base font-bold text-white">
-									<input type="radio" bind:group={SelectedVoice} value={n} />
+									<input type="radio" bind:group={SelectedVoiceIndex} value={n} />
 									{n}: {i.name} ({i.lang})
 								</label>
 							</li>
