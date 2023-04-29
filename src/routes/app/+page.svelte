@@ -76,7 +76,7 @@
 
                                 Voices = [
 					{
-						error: Speech
+						error: Speech.getVoices()
 					}
 				];
 			} else {
