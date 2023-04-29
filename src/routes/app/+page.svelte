@@ -139,7 +139,7 @@
 					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} {SelectedVoice.default ? "(Default)" : ""}
 				</p>
                                 <p class="text-sm font-semibold text-gray-700">
-					Settings: Pitch ({Pitch}) | Rate ({Rate})
+					Settings: Pitch ({Pitch}) | Speed/Rate ({Rate})
 				</p>
                                 <p class="text-sm font-semibold text-gray-700">
 					Voices: {Voices.length}
@@ -177,7 +177,7 @@
 
                                 <div class="p-2" />
 
-                                <label for="rate">Rate:</label>
+                                <label for="rate">Speed/Rate:</label>
                                 <input type="range" name="rate" min="0" max="10" bind:value={Rate}>
 			</section>
 		{/if}
