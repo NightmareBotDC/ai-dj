@@ -15,7 +15,11 @@
 	let SelectedVoiceIndex: Number = 0;
 	let SelectedVoice: any = null;
 
-	let TTSsay: Function = () => {};
+	let TTSsay: Function = (Message: string) => {
+	    let tts = new SpeechSynthesisUtterance(Message);
+	    tts.voice = SelectedVoice;
+	    window.speechSynthesis.speak(tts);
+	};
 
 	let EventLogs: Event[] = [
 		{
@@ -76,12 +80,6 @@
 					Voices = Speech.getVoices();
 					SelectedVoiceIndex = 0;
 					SelectedVoice = Voices[SelectedVoiceIndex];
-
-					TTSsay = (Message: string) => {
-						let tts = new SpeechSynthesisUtterance(Message);
-						tts.voice = SelectedVoice;
-						Speech.speak(tts);
-					};
 				};
 
 				if ('onvoiceschanged' in Speech) {
