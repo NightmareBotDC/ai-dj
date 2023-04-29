@@ -126,7 +126,7 @@
 
 		<div class="p-3" />
 
-                <h2 class="text-base font-bold text-white">Selected Voice: {SelectedVoice} | Index: {SelectedVoiceIndex}</h2>
+                <h2 class="text-base font-bold text-white">Selected Voice: {SelectedVoice.name} | Index: {SelectedVoiceIndex}</h2>
 
 		{#if Voices.length != 0}
 			<section class="bg-white rounded-md p-3" id="voices">
