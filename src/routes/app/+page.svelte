@@ -129,7 +129,7 @@
 		{#if Voices.length != 0}
 			<section class="bg-white rounded-md p-3" id="voices">
 				<h1 class="text-base font-bold text-black">Available Voices</h1>
-                                <p class="text-base font-bold text-black">Current: {SelectedVoice.name}</p>
+                                <p class="text-sm font-semibold text-gray-700">Current: {SelectedVoice.name}</p>
 
 				<div class="p-2" />
 
