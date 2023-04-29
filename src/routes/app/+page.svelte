@@ -84,7 +84,7 @@
 				const loadVoices = () => {
 					Voices = Speech.getVoices();
 					SelectedVoiceIndex = Voices.findIndex((voice) => voice.default === true);
-					SelectedVoice = Voices.find((voice) => voice.default === true);
+					SelectedVoice = Voices[SelectedVoiceIndex];
 				};
 
 				if ('onvoiceschanged' in Speech) {
@@ -136,7 +136,7 @@
 			<section class="bg-white rounded-md p-3" id="voices">
 				<h1 class="text-base font-bold text-black">Available Voices</h1>
 				<p class="text-sm font-semibold text-gray-700">
-					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} [{SelectedVoice.lang}]
+					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} [{SelectedVoice.lang}] {SelectedVoice.default ?? "(Default)" : ""}
 				</p>
                                 <p class="text-sm font-semibold text-gray-700">
 					Settings: Pitch ({Pitch}) | Rate ({Rate})
@@ -163,7 +163,7 @@
 										bind:group={SelectedVoiceIndex}
 										value={n}
 									/>
-									{n + 1}. {i.name} [{i.lang}]
+									{n + 1}. {i.name} [{i.lang}] {i.default ?? "(Default)" : ""}
 								</label>
 							</li>
 						{/if}
