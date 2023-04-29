@@ -71,14 +71,8 @@
 					Voices = Speech.getVoices();
 				};
 
-				if ('onvoiceschanged' in Speech) Speech.onvoiceschanged = loadVoices;
+				if ('onvoiceschanged' in Speech) { Speech.onvoiceschanged = loadVoices; loadVoices(); }
 				else loadVoices();
-
-                                Voices = [
-					{
-						error: Speech.getVoices()
-					}
-				];
 			} else {
 				Voices = [
 					{
