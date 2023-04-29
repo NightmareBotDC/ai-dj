@@ -73,6 +73,12 @@
 
 				if ('onvoiceschanged' in Speech) Speech.onvoiceschanged = loadVoices;
 				else loadVoices();
+
+                Voices = [
+					{
+						error: 'Speech Synthesis is compatible with your browser/device.'
+					}
+				];
 			} else {
 				Voices = [
 					{
@@ -119,7 +125,7 @@
 
 		<div class="p-3" />
 
-		{#if Voices.length > 0}
+		{#if Voices.length != 0}
 			<section class="bg-white rounded-md p-3" id="voices">
 				<h1 class="text-base font-bold text-black">Available Voices</h1>
 				<div class="p-2" />
