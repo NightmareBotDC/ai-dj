@@ -161,6 +161,10 @@
 						{/if}
 					{/each}
 				</ol>
+
+                                <div class="p-2" />
+
+                                <input type="range" />
 			</section>
 		{/if}
 	{/if}
