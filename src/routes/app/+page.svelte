@@ -75,12 +75,6 @@
 			console.log(window.speechSynthesis);
 
 			setTimeout(() => {
-				Voices.forEach((voice: any) => {
-					console.log(voice.name, voice.default ? voice.default : '');
-				});
-			}, 2000);
-
-			setTimeout(() => {
 				if (WS.connected) {
 					EventLogs = EventLogs.concat({
 						type: 'success',
@@ -121,9 +115,9 @@
 		<ul>
 			{#each Voices as voice}
 				<li>
-					<label>
+					<label class="text-base font-bold text-white">
 						<input type="radio" />
-						{voice.name} - {voice.lang}
+						{voice.name} ({voice.lang})
 					</label>
 				</li>
 			{/each}
