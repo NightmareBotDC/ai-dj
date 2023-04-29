@@ -16,6 +16,7 @@
 	let SelectedVoice: any = null;
 
         let Pitch: Number = 0;
+        let Rate: Number = 0;
 
 	let TTSsay: Function = (Message: string) => {
 	    let tts = new SpeechSynthesisUtterance(Message);
@@ -168,6 +169,9 @@
 
                                 <label for="pitch">Pitch ({Pitch}):</label>
                                 <input type="range" name="pitch" min="0" max="10" bind:value={Pitch}>
+
+                                <label for="rate">Rate ({Rate}):</label>
+                                <input type="range" name="rate" min="0" max="10" bind:value={Rate}>
 			</section>
 		{/if}
 	{/if}
