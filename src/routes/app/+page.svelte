@@ -170,6 +170,8 @@
                                 <label for="pitch">Pitch ({Pitch}):</label>
                                 <input type="range" name="pitch" min="0" max="10" bind:value={Pitch}>
 
+                                <div class="p-2" />
+
                                 <label for="rate">Rate ({Rate}):</label>
                                 <input type="range" name="rate" min="0" max="10" bind:value={Rate}>
 			</section>
