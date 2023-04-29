@@ -129,7 +129,7 @@
 		{#if Voices.length != 0}
 			<section class="bg-white rounded-md p-3" id="voices">
 				<h1 class="text-base font-bold text-black">Available Voices</h1>
-                                <p class="text-sm font-semibold text-gray-700">Current: {SelectedVoice.name}</p>
+                                <p class="text-sm font-semibold text-gray-700">Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name}</p>
 
 				<div class="p-2" />
 
@@ -141,7 +141,7 @@
 							<li>
 								<label class="text-base font-bold text-white">
 									<input type="radio" on:change={() => { SelectedVoice = Voices[n]; }} bind:group={SelectedVoiceIndex} value={n} />
-									{n + 1}: {i.name} ({i.lang})
+									{n + 1}. {i.name} ({i.lang})
 								</label>
 							</li>
 						{/if}
