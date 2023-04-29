@@ -72,14 +72,14 @@
 
 				const loadVoices = () => {
 					Voices = Speech.getVoices();
+                                        SelectedVoice = Voices[0];
+                                        SelectedVoiceIndex = 0;
 				};
 
 				if ('onvoiceschanged' in Speech) {
 					Speech.onvoiceschanged = loadVoices;
 					loadVoices();
 				} else loadVoices();
-
-				SelectedVoice = Voices[0];
 			} else {
 				Voices = [
 					{
