@@ -95,11 +95,6 @@
 						description: `Connected to the server!`
 					});
 
-					EventLogs = EventLogs.concat({
-						type: 'debug',
-						description: `Waiting for TTS voices to load.`
-					});
-
 					Loading = false;
 				}
 			}, 2000);
@@ -130,7 +125,7 @@
 			<section class="bg-white rounded-md p-3" id="voices">
 				<h1 class="text-base font-bold text-black">Available Voices</h1>
 				<p class="text-sm font-semibold text-gray-700">
-					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} ({SelectedVoice.lang})
+					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} [{SelectedVoice.lang}]
 				</p>
 
 				<div class="p-2" />
@@ -150,7 +145,7 @@
 										bind:group={SelectedVoiceIndex}
 										value={n}
 									/>
-									{n + 1}. {i.name} ({i.lang})
+									{n + 1}. {i.name} [{i.lang}]
 								</label>
 							</li>
 						{/if}
