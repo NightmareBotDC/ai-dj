@@ -139,7 +139,7 @@
 							<li>
 								<label class="text-base font-bold text-white">
 									<input type="radio" on:change={() => { SelectedVoice = Voices[n]; }} bind:group={SelectedVoiceIndex} value={n} />
-									{n}: {i.name} ({i.lang})
+									{n + 1}: {i.name} ({i.lang})
 								</label>
 							</li>
 						{/if}
