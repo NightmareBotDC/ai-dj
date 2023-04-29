@@ -13,7 +13,7 @@
 	let Speech: any = null;
 	let Voices: any = [];
 	let SelectedVoiceIndex: Number = 0;
-        let SelectedVoice: any = Voices[SelectedVoiceIndex];
+        let SelectedVoice: any = null;
 
 	let EventLogs: Event[] = [
 		{
@@ -79,7 +79,7 @@
 					loadVoices();
 				} else loadVoices();
 
-				if (Voices.length != 0) SelectedVoice = Voices[0];
+				SelectedVoice = Voices[0];
 			} else {
 				Voices = [
 					{
