@@ -139,7 +139,9 @@
                                 <p class="text-sm font-semibold text-gray-700">
 					Voices: {Voices.length}
 				</p>
-
+                                <p class="text-sm font-semibold text-gray-700">
+					Settings: Pitch ({Pitch}) | Rate ({Rate})
+				</p>
 				<div class="p-2" />
 
 				<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
@@ -167,12 +169,12 @@
 
                                 <div class="p-2" />
 
-                                <label for="pitch">Pitch ({Pitch}):</label>
+                                <label for="pitch">Pitch:</label>
                                 <input type="range" name="pitch" min="0" max="10" bind:value={Pitch}>
 
                                 <div class="p-2" />
 
-                                <label for="rate">Rate ({Rate}):</label>
+                                <label for="rate">Rate:</label>
                                 <input type="range" name="rate" min="0" max="10" bind:value={Rate}>
 			</section>
 		{/if}
