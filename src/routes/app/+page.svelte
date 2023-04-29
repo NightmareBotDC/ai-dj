@@ -74,9 +74,9 @@
 				if ('onvoiceschanged' in Speech) Speech.onvoiceschanged = loadVoices;
 				else loadVoices();
 
-                Voices = [
+                                Voices = [
 					{
-						error: JSON.stringify(Speech)
+						error: Speech
 					}
 				];
 			} else {
