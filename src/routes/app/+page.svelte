@@ -164,7 +164,8 @@
 
                                 <div class="p-2" />
 
-                                <input type="range" />
+                                <label for="pitch">Pitch:</label>
+                                <input type="range" name="pitch">
 			</section>
 		{/if}
 	{/if}
