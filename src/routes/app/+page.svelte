@@ -112,16 +112,21 @@
 
 		<div class="p-3" />
 
-		<ul>
-			{#each Voices as voice}
-				<li>
-					<label class="text-base font-bold text-white">
-						<input type="radio" />
-						{voice.name} ({voice.lang})
-					</label>
-				</li>
-			{/each}
-		</ul>
+		<section class="bg-white rounded-md p-3" id="voices">
+			<h1 class="text-base font-bold text-black">Available Voices</h1>
+			<div class="p-2" />
+
+			<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
+				{#each Voices as voice}
+					<li>
+						<label class="text-base font-bold text-white">
+							<input type="radio" />
+							{voice.name} ({voice.lang})
+						</label>
+					</li>
+				{/each}
+			</ol>
+		</section>
 	{/if}
 
 	<div class="p-3" />
