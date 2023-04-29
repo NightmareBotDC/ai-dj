@@ -136,7 +136,7 @@
 						{:else}
 							<li>
 								<label class="text-base font-bold text-white">
-									<input type="radio" />
+									<input type="radio" bind:group={SelectedVoice} value={n} />
 									{n}: {i.name} ({i.lang})
 								</label>
 							</li>
