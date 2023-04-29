@@ -64,15 +64,20 @@
 				});
 			});
 
-			const loadVoices = () => {
-				Voices = window.speechSynthesis.getVoices();
-			};
+			if ('speechSynthesis' in window) {
+				const loadVoices = () => {
+					Voices = window.speechSynthesis.getVoices();
+				};
 
-			if ('onvoiceschanged' in window.speechSynthesis)
-				window.speechSynthesis.onvoiceschanged = loadVoices;
-			else loadVoices();
-
-			console.log(window.speechSynthesis);
+				if ('onvoiceschanged' in window.speechSynthesis)
+					window.speechSynthesis.onvoiceschanged = loadVoices;
+				else loadVoices();
+			} else {
+				Voices = Voices.concat({
+					name: 'Speech Synthesis is not supported on your browser',
+					lang: 'EN-US'
+				});
+			}
 
 			setTimeout(() => {
 				if (WS.connected) {
