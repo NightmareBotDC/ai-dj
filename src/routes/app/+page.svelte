@@ -79,7 +79,7 @@
 					loadVoices();
 				} else loadVoices();
 
-				if (Voices.length != 0) SelectedVoice = Voices[SelectedVoiceIndex];
+				if (Voices.length != 0) SelectedVoice = Voices[0];
 			} else {
 				Voices = [
 					{
@@ -140,7 +140,7 @@
 						{:else}
 							<li>
 								<label class="text-base font-bold text-white">
-									<input type="radio" bind:group={SelectedVoiceIndex} value={n} />
+									<input type="radio" on:change={() => { SelectedVoice = Voices[SelectedVoiceIndex]; }} bind:group={SelectedVoiceIndex} value={n} />
 									{n}: {i.name} ({i.lang})
 								</label>
 							</li>
