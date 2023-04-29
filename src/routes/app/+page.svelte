@@ -3,19 +3,21 @@
 	import { onMount } from 'svelte';
 	import Meta from '../components/Meta.svelte';
 
-        interface Event {
-          type: String,
-          description: String
-        }
+	interface Event {
+		type: string;
+		description: string;
+	}
 
 	let Loading: Boolean = true;
 	let WS: any = null;
-        let Speech: any = null;
-        let Voices: any = [];
-	let EventLogs: Event = [{
-          type: "success",
-          description: "Page Loaded. Connecting to server now!"
-        }];
+	let Speech: any = null;
+	let Voices: any = [];
+	let EventLogs: Event[] = [
+		{
+			type: 'success',
+			description: 'Page Loaded. Connecting to server now!'
+		}
+	];
 
 	export let data: any;
 
@@ -26,75 +28,74 @@
 	if (isAccountConnected('Spotify')) {
 		Loading = true;
 
-                EventLogs = EventLogs.concat({
-                   type: "success",
-                   description: "User authenticated, and Azidoazide account is linked with Spotify."
-                });
+		EventLogs = EventLogs.concat({
+			type: 'success',
+			description: 'User authenticated, and Azidoazide account is linked with Spotify.'
+		});
 
 		onMount(() => {
 			WS = io('wss://api.azidoazide.xyz', { transports: ['websocket'] });
 
-                        WS.io.on("error", (error) => {
-                           EventLogs = EventLogs.concat({
-                               type: "error",
-                               description: error
-                           });
-                        });
+			WS.io.on('error', (error: any) => {
+				EventLogs = EventLogs.concat({
+					type: 'error',
+					description: error
+				});
+			});
 
-                        WS.io.on("reconnect", (attempt) => {
-                           EventLogs = EventLogs.concat({
-                               type: "debug",
-                               description: `Reconnected to server. Attempt: #${attempt}`
-                           });
-                        });
+			WS.io.on('reconnect', (attempt: any) => {
+				EventLogs = EventLogs.concat({
+					type: 'debug',
+					description: `Reconnected to server. Attempt: #${attempt}`
+				});
+			});
 
-                        WS.io.on("reconnect_attempt", (attempt) => {
-                           EventLogs = EventLogs.concat({
-                               type: "debug",
-                               description: `Attempting to reconnect to server. Attempt: #${attempt}`
-                           });
-                        });
+			WS.io.on('reconnect_attempt', (attempt: any) => {
+				EventLogs = EventLogs.concat({
+					type: 'debug',
+					description: `Attempting to reconnect to server. Attempt: #${attempt}`
+				});
+			});
 
-                        WS.io.on("reconnect_error", (error) => {
-                           EventLogs = EventLogs.concat({
-                               type: "error",
-                               description: `Something went wrong with reconnecting to the server. Error: ${error}`
-                           });
-                        });
+			WS.io.on('reconnect_error', (error: any) => {
+				EventLogs = EventLogs.concat({
+					type: 'error',
+					description: `Something went wrong with reconnecting to the server. Error: ${error}`
+				});
+			});
 
-                        /*const loadVoices = () => {
-                           Voices = window.speechSynthesis.getVoices();
-                        };
+			const loadVoices = () => {
+				Voices = window.speechSynthesis.getVoices();
+			};
 
-                        if ("onvoiceschanged" in window.speechSynthesis) window.speechSynthesis.onvoiceschanged = loadVoices;
-                        else loadVoices();*/
+			if ('onvoiceschanged' in window.speechSynthesis)
+				window.speechSynthesis.onvoiceschanged = loadVoices;
+			else loadVoices();
 
-                        console.log(window.speechSynthesis);
+			console.log(window.speechSynthesis);
 
-                        /*setTimeout(() => {
-                           Voices.forEach((voice) => {
-                               console.log(voice.name, voice.default ? voice.default :'');
-                           });
-                        }, 2000);*/
+			setTimeout(() => {
+				Voices.forEach((voice: any) => {
+					console.log(voice.name, voice.default ? voice.default : '');
+				});
+			}, 2000);
 
-			console.log(WS);
+			setTimeout(() => {
+				if (WS.connected) {
+					EventLogs = EventLogs.concat({
+						type: 'success',
+						description: `Connected to the server!`
+					});
+
+					EventLogs = EventLogs.concat({
+						type: 'debug',
+						description: `Waiting for TTS voices to load.`
+					});
+
+					Loading = false;
+				}
+			}, 2000);
 		});
-
-		setTimeout(() => {
-			if (WS.connected) {
-                           EventLogs = EventLogs.concat({
-                               type: "success",
-                               description: `Connected to the server!`
-                           });
-
-                           EventLogs = EventLogs.concat({
-                               type: "debug",
-                               description: `Waiting for TTS voices to load.`
-                           });
-
-                           Loading = false;
-                        }
-		}, 2000);
 	}
 </script>
 
@@ -110,32 +111,34 @@
 				Loading your personalized DJ experience...
 			</p>
 		</div>
-        {:else}
-           <h1 class="text-base font-bold text-white">Welcome to your personalized Music DJ experience. We hope you enjoy your time here!</h1>
-           
-           <div class="p-3"></div>
+	{:else}
+		<h1 class="text-base font-bold text-white">
+			Welcome to your personalized Music DJ experience. We hope you enjoy your time here!
+		</h1>
 
-           <ul>
-             {#each Voices as voice}
-               <li>
-                 <label>
-                    <input type="radio">
-                    {voice.name} - {voice.lang}
-                 </label>
-              </li>
-            {/each}
-          </ul>
-       {/if}
+		<div class="p-3" />
 
-        <div class="p-3"></div>
+		<ul>
+			{#each Voices as voice}
+				<li>
+					<label>
+						<input type="radio" />
+						{voice.name} - {voice.lang}
+					</label>
+				</li>
+			{/each}
+		</ul>
+	{/if}
+
+	<div class="p-3" />
 
 	<section class="bg-white rounded-md p-3" id="event_logs">
 		<h1 class="text-base font-bold text-black">Event Log</h1>
-		<div class="p-2"></div>
+		<div class="p-2" />
 
 		<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
 			{#each EventLogs as event}
-                                <div class="p-1" />
+				<div class="p-1" />
 
 				<li>
 					<div>
