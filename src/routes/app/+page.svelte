@@ -16,7 +16,7 @@
 	let SelectedVoice: any = null;
 
         let Pitch: Number = 0;
-        let Rate: Number = 0;
+        let Rate: Number = 1;
 
 	let TTSsay: Function = (Message: string) => {
 	    let tts = new SpeechSynthesisUtterance(Message);
