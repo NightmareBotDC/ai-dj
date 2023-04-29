@@ -65,18 +65,20 @@
 			});
 
 			if ('speechSynthesis' in window) {
+				Speech = window.speechSynthesis;
+
 				const loadVoices = () => {
-					Voices = window.speechSynthesis.getVoices();
+					Voices = Speech.getVoices();
 				};
 
-				if ('onvoiceschanged' in window.speechSynthesis)
-					window.speechSynthesis.onvoiceschanged = loadVoices;
+				if ('onvoiceschanged' in Speech) Speech.onvoiceschanged = loadVoices;
 				else loadVoices();
 			} else {
-				Voices = Voices.concat({
-					name: 'Speech Synthesis is not supported on your browser',
-					lang: 'EN-US'
-				});
+				Voices = [
+					{
+						error: 'Speech Synthesis is not compatible with your browser/device.'
+					}
+				];
 			}
 
 			setTimeout(() => {
@@ -124,12 +126,16 @@
 
 				<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
 					{#each Voices as voice}
-						<li>
-							<label class="text-base font-bold text-white">
-								<input type="radio" />
-								{voice.name} ({voice.lang})
-							</label>
-						</li>
+						{#if voice.error}
+							<h1 class="text-base font-bold text-white">Error: {voice.error}</h1>
+						{:else}
+							<li>
+								<label class="text-base font-bold text-white">
+									<input type="radio" />
+									{voice.name} ({voice.lang})
+								</label>
+							</li>
+						{/if}
 					{/each}
 				</ol>
 			</section>
