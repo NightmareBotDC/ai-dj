@@ -134,7 +134,7 @@
 					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} [{SelectedVoice.lang}]
 				</p>
                                 <p class="text-sm font-semibold text-gray-700">
-					Voices #: {Voices.length}
+					Voices: {Voices.length}
 				</p>
 
 				<div class="p-2" />
