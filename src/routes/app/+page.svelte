@@ -21,6 +21,8 @@
 	let TTSsay: Function = (Message: string) => {
 	    let tts = new SpeechSynthesisUtterance(Message);
 	    tts.voice = SelectedVoice;
+            tts.pitch = Pitch;
+            tts.rate = Rate;
 	    window.speechSynthesis.speak(tts);
 	};
 
