@@ -12,6 +12,7 @@
 	let WS: any = null;
 	let Speech: any = null;
 	let Voices: any = [];
+	let SelectedVoice: any = null;
 	let EventLogs: Event[] = [
 		{
 			type: 'success',
@@ -71,8 +72,12 @@
 					Voices = Speech.getVoices();
 				};
 
-				if ('onvoiceschanged' in Speech) { Speech.onvoiceschanged = loadVoices; loadVoices(); }
-				else loadVoices();
+				if ('onvoiceschanged' in Speech) {
+					Speech.onvoiceschanged = loadVoices;
+					loadVoices();
+				} else loadVoices();
+
+				if (Voices.length != 0) SelectedVoice = Voices[0];
 			} else {
 				Voices = [
 					{
@@ -125,14 +130,14 @@
 				<div class="p-2" />
 
 				<ol class="bg-gray-700 p-2 rounded-md h-20 overflow-y-auto">
-					{#each Voices as voice}
-						{#if voice.error}
-							<h1 class="text-base font-bold text-white">Error: {voice.error}</h1>
+					{#each Voices as i, n}
+						{#if i.error}
+							<h1 class="text-base font-bold text-white">Error: {i.error}</h1>
 						{:else}
 							<li>
 								<label class="text-base font-bold text-white">
 									<input type="radio" />
-									{voice.name} ({voice.lang})
+									{n}: {i.name} ({i.lang})
 								</label>
 							</li>
 						{/if}
