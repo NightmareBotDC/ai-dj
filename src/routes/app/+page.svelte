@@ -72,8 +72,8 @@
 
 				const loadVoices = () => {
 					Voices = Speech.getVoices();
-                                        SelectedVoice = Voices[0];
                                         SelectedVoiceIndex = 0;
+                                        SelectedVoice = Voices[SelectedVoiceIndex];
 				};
 
 				if ('onvoiceschanged' in Speech) {
@@ -138,7 +138,7 @@
 						{:else}
 							<li>
 								<label class="text-base font-bold text-white">
-									<input type="radio" on:change={() => { SelectedVoice = Voices[SelectedVoiceIndex]; }} bind:group={SelectedVoiceIndex} value={n} />
+									<input type="radio" on:change={() => { SelectedVoice = Voices[n]; }} bind:group={SelectedVoiceIndex} value={n} />
 									{n}: {i.name} ({i.lang})
 								</label>
 							</li>
