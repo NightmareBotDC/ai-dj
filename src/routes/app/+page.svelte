@@ -12,18 +12,18 @@
 	let WS: any = null;
 	let Speech: any = null;
 	let Voices: any = [];
-	let SelectedVoiceIndex: Number = 0;
+	let SelectedVoiceIndex: number = 0;
 	let SelectedVoice: any = null;
 
-        let Pitch: Number = 0;
-        let Rate: Number = 1;
+	let Pitch: number = 0;
+	let Rate: number = 1;
 
 	let TTSsay: Function = (Message: string) => {
-	    let tts = new SpeechSynthesisUtterance(Message);
-	    tts.voice = SelectedVoice;
-            tts.pitch = Pitch;
-            tts.rate = Rate;
-	    window.speechSynthesis.speak(tts);
+		let tts = new SpeechSynthesisUtterance(Message);
+		tts.voice = SelectedVoice;
+		tts.pitch = Pitch;
+		tts.rate = Rate;
+		window.speechSynthesis.speak(tts);
 	};
 
 	let EventLogs: Event[] = [
@@ -83,7 +83,7 @@
 
 				const loadVoices = () => {
 					Voices = Speech.getVoices();
-					SelectedVoiceIndex = Voices.findIndex((voice) => voice.default === true);
+					SelectedVoiceIndex = Voices.findIndex((voice: any) => voice.default === true);
 					SelectedVoice = Voices[SelectedVoiceIndex];
 				};
 
@@ -99,38 +99,41 @@
 				];
 			}
 
-                        if ("Spotify" in window) {
-                               const token = isAccountConnected('Spotify').accessToken;
-                               const player = new Spotify.Player({
-                                  name: 'AzidoDJ',
-                                  getOAuthToken: (cb: any) => { cb(token); },
-                                  volume: 0.5
-                               });
-      
-                               // Ready
-                               player.addListener('ready', ({ device_id: any }) => {
-                                   console.log('Ready with Device ID', device_id);
-                               });
+			if ('Spotify' in window) {
+				const Spotify: any = window.Spotify;
+				const token = isAccountConnected('Spotify').accessToken;
+				const player = new Spotify.Player({
+					name: 'AzidoDJ',
+					getOAuthToken: (cb: any) => {
+						cb(token);
+					},
+					volume: 0.5
+				});
 
-                               // Not Ready
-                               player.addListener('not_ready', ({ device_id: any }) => {
-                                   console.log('Device ID has gone offline', device_id);
-                               });
+				// Ready
+				player.addListener('ready', ({ device_id }: any) => {
+					console.log('Ready with Device ID', device_id);
+				});
 
-                               player.addListener('initialization_error', ({ message: any }) => {
-                                   console.error(message);
-                               });
+				// Not Ready
+				player.addListener('not_ready', ({ device_id }: any) => {
+					console.log('Device ID has gone offline', device_id);
+				});
 
-                               player.addListener('authentication_error', ({ message: any }) => {
-                                   console.error(message);
-                               });
+				player.addListener('initialization_error', ({ message }: any) => {
+					console.error(message);
+				});
 
-                               player.addListener('account_error', ({ message: any }) => {
-                                   console.error(message);
-                               });
+				player.addListener('authentication_error', ({ message }: any) => {
+					console.error(message);
+				});
 
-                              player.connect();
-                        }
+				player.addListener('account_error', ({ message }: any) => {
+					console.error(message);
+				});
+
+				player.connect();
+			}
 
 			setTimeout(() => {
 				if (WS.connected) {
@@ -169,12 +172,13 @@
 			<section class="bg-white rounded-md p-3" id="voices">
 				<h1 class="text-base font-bold text-black">Available Voices</h1>
 				<p class="text-sm font-semibold text-gray-700">
-					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name} {SelectedVoice.default ? "(Default)" : ""}
+					Current: {SelectedVoiceIndex + 1}. {SelectedVoice.name}
+					{SelectedVoice.default ? '(Default)' : ''}
 				</p>
-                                <p class="text-sm font-semibold text-gray-700">
+				<p class="text-sm font-semibold text-gray-700">
 					Settings: Pitch ({Pitch}) | Speed/Rate ({Rate})
 				</p>
-                                <p class="text-sm font-semibold text-gray-700">
+				<p class="text-sm font-semibold text-gray-700">
 					Voices: {Voices.length}
 				</p>
 
@@ -196,22 +200,23 @@
 										bind:group={SelectedVoiceIndex}
 										value={n}
 									/>
-									{n + 1}. {i.name} {i.default ? "(Default)" : ""}
+									{n + 1}. {i.name}
+									{i.default ? '(Default)' : ''}
 								</label>
 							</li>
 						{/if}
 					{/each}
 				</ol>
 
-                                <div class="p-2" />
+				<div class="p-2" />
 
-                                <label for="pitch">Pitch:</label>
-                                <input type="range" name="pitch" min="0" max="10" bind:value={Pitch}>
+				<label for="pitch">Pitch:</label>
+				<input type="range" name="pitch" min="0" max="10" bind:value={Pitch} />
 
-                                <div class="p-2" />
+				<div class="p-2" />
 
-                                <label for="rate">Speed/Rate:</label>
-                                <input type="range" name="rate" min="0" max="10" bind:value={Rate}>
+				<label for="rate">Speed/Rate:</label>
+				<input type="range" name="rate" min="0" max="10" bind:value={Rate} />
 			</section>
 		{/if}
 	{/if}
