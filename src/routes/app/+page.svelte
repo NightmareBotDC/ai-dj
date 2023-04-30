@@ -40,6 +40,7 @@
 	let Rate: number = 1;
 
         let CurrService: String = "AzidoDJ";
+        let SpotifyDeviceID: String | null = null;
         let Song: SongData | null = null;
 
 	let TTSsay: Function = (Message: string) => {
@@ -137,11 +138,13 @@
 				// Ready
 				player.addListener('ready', ({ device_id }: any) => {
 					console.log('Ready with Device ID', device_id);
+                                        SpotifyDeviceID = device_id;
 				});
 
 				// Not Ready
 				player.addListener('not_ready', ({ device_id }: any) => {
 					console.log('Device ID has gone offline', device_id);
+                                        SpotifyDeviceID = null;
 				});
 
                                 // Initialization Error
@@ -207,13 +210,14 @@
 			</p>
 		</div>
 	{:else}
-		<div class="flex items-center justify-center bg-gray-700 p-4 h-50 rounded-md">
+		<div class="bg-gray-700 p-4 h-50 rounded-md">
                    <img src={CurrService === "AzidoDJ" ? "/logo.png" : "/Spotify_Logo.png"} alt="Currently Playing" class="{CurrService === "AzidoDJ" ? "h-12 w-12" : "w-32"} rounded-md" />
                    <div class="p-2" />
                    
                    {#if Song}
                       <!--<img src={Song.AlbumCover} alt="Album Cover" />-->
                       <h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
+                      <div class="p-2" />
                       <h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
                    {/if}
                 </div>
