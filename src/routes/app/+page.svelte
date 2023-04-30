@@ -167,7 +167,9 @@
 			</p>
 		</div>
 	{:else}
-		<img src={CurrService === "AzidoDJ" ? "/logo.png" : "/Spotify_Logo.png"} alt="Currently Playing" height="40px" width="40px" />
+		<center>
+                   <img src={CurrService === "AzidoDJ" ? "/logo.png" : "/Spotify_Logo.png"} alt="Currently Playing" class="h-8 w-8 rounded-md" />
+                </center>
 
 		<div class="p-3" />
 
