@@ -45,6 +45,7 @@
         let TTSMessage: String | null = null;
 
 	let TTSsay: Function = (Message: string) => {
+            if (Speech) {
                 CurrService = "AzidoDJ";
                 TTSMessage = Message;
                 Song = null;
@@ -53,12 +54,13 @@
 		tts.voice = SelectedVoice;
 		tts.pitch = Pitch;
 		tts.rate = Rate;
-		window.speechSynthesis.speak(tts);
+		Speech.speak(tts);
               
                 tts.addEventListener("end", () => {
                     CurrService = "Spotify";
                     TTSMessage = null;
                 });
+            }
 	};
 
 	let EventLogs: Event[] = [
