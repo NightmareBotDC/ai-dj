@@ -19,9 +19,7 @@
 	let Rate: number = 1;
 
         let CurrService: String = "Spotify";
-        let SongTitle: String = "";
-        let SongAlbum: String = "";
-        let SongArtist: String = "";
+        let Song: Array | null = null;
 
 	let TTSsay: Function = (Message: string) => {
 		let tts = new SpeechSynthesisUtterance(Message);
@@ -169,6 +167,13 @@
 	{:else}
 		<div class="flex items-center justify-center bg-gray-700 p-4 h-50 rounded-md">
                    <img src={CurrService === "AzidoDJ" ? "/logo.png" : "/Spotify_Logo.png"} alt="Currently Playing" class="{CurrService === "AzidoDJ" ? "" : "w-32"} rounded-md" />
+                   <div class="p-2" />
+                   
+                   {#if Song}
+                      <img src={Song.AlbumCover} alt="Album Cover" />
+                      <h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
+                      <h3 class="text-base font-bold text-white">{Song.Artist}</h3>
+                   {/if}
                 </div>
 
 		<div class="p-3" />
