@@ -42,7 +42,7 @@
         let CurrService: String = "AzidoDJ";
         let SpotifyDeviceID: String | null = null;
         let Song: SongData | null = null;
-        let TTSMessage: String | null = null;
+        let TTSMessage: String | null = "Waiting for TTS voices.";
 
 	let TTSsay: Function = (Message: string) => {
             if (Speech) {
