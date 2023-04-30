@@ -132,7 +132,7 @@
 					getOAuthToken: (cb: any) => {
 						cb(token);
 					},
-					volume: 0.5
+					volume: 1.0
 				});
 
 				// Ready
@@ -215,7 +215,7 @@
                    <div class="p-2" />
                    
                    {#if Song}
-                      <!--<img src={Song.AlbumCover} alt="Album Cover" />-->
+                      <img src={Song.Album.images[0].url} alt="Album Cover" />
                       <h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
                       <div class="p-2" />
                       <h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
