@@ -44,11 +44,17 @@
         let Song: SongData | null = null;
 
 	let TTSsay: Function = (Message: string) => {
+                CurrService = "AzidoDJ";
+
 		let tts = new SpeechSynthesisUtterance(Message);
 		tts.voice = SelectedVoice;
 		tts.pitch = Pitch;
 		tts.rate = Rate;
 		window.speechSynthesis.speak(tts);
+              
+                tts.addEventListener("end", () => {
+                    CurrService = "Spotify";
+                });
 	};
 
 	let EventLogs: Event[] = [
@@ -184,7 +190,6 @@
 			}
 
                         WS.on("tts_say", (msg) => {
-                           CurrService = "AzidoDJ";
                            TTSsay(msg);
                         });
 
