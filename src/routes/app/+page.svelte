@@ -42,9 +42,12 @@
         let CurrService: String = "AzidoDJ";
         let SpotifyDeviceID: String | null = null;
         let Song: SongData | null = null;
+        let TTSMessage: String | null = null;
 
 	let TTSsay: Function = (Message: string) => {
                 CurrService = "AzidoDJ";
+                TTSMessage = Message;
+                Song = null;
 
 		let tts = new SpeechSynthesisUtterance(Message);
 		tts.voice = SelectedVoice;
@@ -54,6 +57,7 @@
               
                 tts.addEventListener("end", () => {
                     CurrService = "Spotify";
+                    TTSMessage = null;
                 });
 	};
 
@@ -229,6 +233,10 @@
                       <h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
                       <div class="p-2" />
                       <h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
+                   {/if}
+
+                   {#if TTSMessage}
+                      <h3 class="text-base font-bold text-white">DJ Azido: {TTSMessage}</h3>
                    {/if}
                 </div>
 
