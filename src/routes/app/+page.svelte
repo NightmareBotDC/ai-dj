@@ -123,18 +123,39 @@
 					console.log('Device ID has gone offline', device_id);
 				});
 
+                                // Initialization Error
 				player.addListener('initialization_error', ({ message }: any) => {
 					console.error(message);
 				});
 
+                                // Authentication Error
 				player.addListener('authentication_error', ({ message }: any) => {
 					console.error(message);
 				});
 
+                                // Account Error
 				player.addListener('account_error', ({ message }: any) => {
 					console.error(message);
 				});
 
+                                // State change
+                                player.addListener('player_state_changed', ({
+                                   position,
+                                   duration,
+                                   track_window: { current_track }
+                                }: any) => {
+                                   console.log('Currently Playing', current_track);
+                                   console.log('Position in Song', position);
+                                   console.log('Duration of Song', duration);
+
+                                   Song = {
+                                      Title: current_track.name,
+                                      Album: current_track.album,
+                                      Artists: current_track.artists
+                                   };
+                                });
+
+                                // Connect to Spotify
 				player.connect();
 			}
 
@@ -170,9 +191,9 @@
                    <div class="p-2" />
                    
                    {#if Song}
-                      <img src={Song.AlbumCover} alt="Album Cover" />
+                      <!--<img src={Song.AlbumCover} alt="Album Cover" />-->
                       <h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
-                      <h3 class="text-base font-bold text-white">{Song.Artist}</h3>
+                      <h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
                    {/if}
                 </div>
 
