@@ -183,6 +183,11 @@
 				player.connect();
 			}
 
+                        WS.on("tts_say", (msg) => {
+                           CurrService = "AzidoDJ";
+                           TTSsay(msg);
+                        });
+
 			setTimeout(() => {
 				if (WS.connected) {
 					EventLogs = EventLogs.concat({
