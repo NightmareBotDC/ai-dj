@@ -18,6 +18,11 @@
 	let Pitch: number = 0;
 	let Rate: number = 1;
 
+        let CurrService: String = "AzidoDJ";
+        let SongTitle: String = "";
+        let SongAlbum: String = "";
+        let SongArtist: String = "";
+
 	let TTSsay: Function = (Message: string) => {
 		let tts = new SpeechSynthesisUtterance(Message);
 		tts.voice = SelectedVoice;
@@ -162,9 +167,7 @@
 			</p>
 		</div>
 	{:else}
-		<h1 class="text-base font-bold text-white">
-			Welcome to your personalized Music DJ experience. We hope you enjoy your time here!
-		</h1>
+		<img src={CurrService === "AzidoDJ" ? "/logo.png" : "/Spotify_Logo.png"} alt="Currently Playing" height="40px" width="40px" />
 
 		<div class="p-3" />
 
