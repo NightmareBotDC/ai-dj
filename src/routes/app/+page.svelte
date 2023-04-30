@@ -8,6 +8,27 @@
 		description: string;
 	}
 
+        interface AlbumImages {
+                url: string;
+        }
+
+        interface Album {
+                uri: string;
+                name: string;
+                images: AlbumImages[]
+        }
+
+        interface Artists {
+               uri: string;
+               name: string;
+        }
+
+        interface SongData {
+                Title: string;
+                Album: Album;
+                Artists: Artists[];
+        }
+
 	let Loading: Boolean = true;
 	let WS: any = null;
 	let Speech: any = null;
@@ -18,8 +39,8 @@
 	let Pitch: number = 0;
 	let Rate: number = 1;
 
-        let CurrService: String = "Spotify";
-        let Song: Array | null = null;
+        let CurrService: String = "AzidoDJ";
+        let Song: SongData | null = null;
 
 	let TTSsay: Function = (Message: string) => {
 		let tts = new SpeechSynthesisUtterance(Message);
