@@ -18,7 +18,7 @@
 	let Pitch: number = 0;
 	let Rate: number = 1;
 
-        let CurrService: String = "AzidoDJ";
+        let CurrService: String = "Spotify";
         let SongTitle: String = "";
         let SongAlbum: String = "";
         let SongArtist: String = "";
