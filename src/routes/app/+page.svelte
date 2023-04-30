@@ -167,9 +167,9 @@
 			</p>
 		</div>
 	{:else}
-		<center>
+		<div class="flex items-center justify-center bg-gray-700 p-2 rounded-md">
                    <img src={CurrService === "AzidoDJ" ? "/logo.png" : "/Spotify_Logo.png"} alt="Currently Playing" class="{CurrService === "AzidoDJ" ? "" : "w-32"} rounded-md" />
-                </center>
+                </div>
 
 		<div class="p-3" />
 
