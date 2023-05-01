@@ -27,7 +27,7 @@
 		Title: string;
 		Album: Album;
 		Artists: Artists[];
-        State: any;
+		Paused: Boolean;
 		Duration: number;
 	}
 
@@ -51,6 +51,7 @@
 	setInterval(() => {
 		if (Song) {
 			if (CurrDuration === Song.Duration) return;
+			if (Song.Paused) return;
 			else CurrDuration = CurrDuration + 1;
 		} else return;
 	}, 1);
@@ -188,16 +189,16 @@
 				// State change
 				player.addListener(
 					'player_state_changed',
-					({ position, duration, state, track_window: { current_track } }: any) => {
+					({ duration, paused, track_window: { current_track } }: any) => {
 						Song = {
 							Title: current_track.name,
 							Album: current_track.album,
 							Artists: current_track.artists,
-                            State: state,
+							Paused: paused,
 							Duration: duration
 						};
 
-                        console.log(Song);
+						console.log(Song);
 					}
 				);
 
