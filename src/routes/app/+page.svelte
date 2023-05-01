@@ -43,6 +43,7 @@
 	let Rate: number = 1;
 
 	let CurrService: String = 'AzidoDJ';
+    let SpotifyPlayer: any = null;
 	let SpotifyDeviceID: String | null = null;
 	let Song: SongData | null = null;
 	let TTSMessage: String | null = 'Waiting for TTS voices.';
@@ -160,6 +161,8 @@
 					volume: 1.0
 				});
 
+                SpotifyPlayer = player;
+
 				// Ready
 				player.addListener('ready', ({ device_id }: any) => {
 					console.log('Ready with Device ID', device_id);
@@ -256,7 +259,8 @@
 				<div class="p-2" />
 				<h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
 				<input type="range" min="0" max={Song.Duration} value={CurrDuration} on:change={(o) => {
-                    console.log(o);
+                    CurrDuration = o.target.value;
+                    SpotifyPlayer.seek(o.target.value);
                 }} />
 			{/if}
 
