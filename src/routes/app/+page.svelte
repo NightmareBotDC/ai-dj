@@ -27,6 +27,7 @@
 		Title: string;
 		Album: Album;
 		Artists: Artists[];
+        State: any;
 		Duration: number;
 	}
 
@@ -187,17 +188,16 @@
 				// State change
 				player.addListener(
 					'player_state_changed',
-					({ position, duration, track_window: { current_track } }: any) => {
-						console.log('Currently Playing', current_track);
-						console.log('Position in Song', position);
-						console.log('Duration of Song', duration);
-
+					({ position, duration, state, track_window: { current_track } }: any) => {
 						Song = {
 							Title: current_track.name,
 							Album: current_track.album,
 							Artists: current_track.artists,
+                            State: state,
 							Duration: duration
 						};
+
+                        console.log(Song);
 					}
 				);
 
