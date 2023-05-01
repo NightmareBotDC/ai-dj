@@ -28,7 +28,7 @@
 		Album: Album;
 		Artists: Artists[];
 		Paused: Boolean;
-        Position: number;
+		Position: number;
 		Duration: number;
 	}
 
@@ -191,17 +191,17 @@
 				player.addListener(
 					'player_state_changed',
 					({ position, duration, paused, track_window: { current_track } }: any) => {
-                        if (Song) {
-                            if (Song.Title != current_track.name) CurrDuration = 0;
-                            else CurrDuration = position;
-                        } else CurrDuration = 0;
+						if (Song) {
+							if (Song.Title != current_track.name) CurrDuration = 0;
+							else CurrDuration = position;
+						} else CurrDuration = 0;
 
 						Song = {
 							Title: current_track.name,
 							Album: current_track.album,
 							Artists: current_track.artists,
 							Paused: paused,
-                            Position: position,
+							Position: position,
 							Duration: duration
 						};
 					}
@@ -255,7 +255,7 @@
 				<h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
 				<div class="p-2" />
 				<h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
-				<progress max={Song.Duration} value={CurrDuration} />
+				<input type="range" min="0" max={Song.Duration} bind:value={CurrDuration} />
 			{/if}
 
 			{#if TTSMessage}
