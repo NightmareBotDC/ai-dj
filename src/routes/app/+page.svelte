@@ -28,6 +28,7 @@
 		Album: Album;
 		Artists: Artists[];
 		Paused: Boolean;
+        Position: number;
 		Duration: number;
 	}
 
@@ -189,16 +190,20 @@
 				// State change
 				player.addListener(
 					'player_state_changed',
-					({ duration, paused, track_window: { current_track } }: any) => {
+					({ position, duration, paused, track_window: { current_track } }: any) => {
+                        if (Song) {
+                            if (Song.Title != current_track.name) CurrDuration = 0;
+                            else CurrDuration = position;
+                        } else CurrDuration = 0;
+
 						Song = {
 							Title: current_track.name,
 							Album: current_track.album,
 							Artists: current_track.artists,
 							Paused: paused,
+                            Position: position,
 							Duration: duration
 						};
-
-						console.log(Song);
 					}
 				);
 
