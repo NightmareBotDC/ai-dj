@@ -8,26 +8,26 @@
 		description: string;
 	}
 
-        interface AlbumImages {
-                url: string;
-        }
+	interface AlbumImages {
+		url: string;
+	}
 
-        interface Album {
-                uri: string;
-                name: string;
-                images: AlbumImages[]
-        }
+	interface Album {
+		uri: string;
+		name: string;
+		images: AlbumImages[];
+	}
 
-        interface Artists {
-               uri: string;
-               name: string;
-        }
+	interface Artists {
+		uri: string;
+		name: string;
+	}
 
-        interface SongData {
-                Title: string;
-                Album: Album;
-                Artists: Artists[];
-        }
+	interface SongData {
+		Title: string;
+		Album: Album;
+		Artists: Artists[];
+	}
 
 	let Loading: Boolean = true;
 	let WS: any = null;
@@ -39,28 +39,28 @@
 	let Pitch: number = 0;
 	let Rate: number = 1;
 
-        let CurrService: String = "AzidoDJ";
-        let SpotifyDeviceID: String | null = null;
-        let Song: SongData | null = null;
-        let TTSMessage: String | null = "Waiting for TTS voices.";
+	let CurrService: String = 'AzidoDJ';
+	let SpotifyDeviceID: String | null = null;
+	let Song: SongData | null = null;
+	let TTSMessage: String | null = 'Waiting for TTS voices.';
 
 	let TTSsay: Function = (Message: string) => {
-            if (Speech) {
-                CurrService = "AzidoDJ";
-                TTSMessage = Message;
-                Song = null;
+		if (Speech) {
+			CurrService = 'AzidoDJ';
+			TTSMessage = Message;
+			Song = null;
 
-		let tts = new SpeechSynthesisUtterance(Message);
-		tts.voice = SelectedVoice;
-		tts.pitch = Pitch;
-		tts.rate = Rate;
-		Speech.speak(tts);
-              
-                tts.addEventListener("end", () => {
-                    CurrService = "Spotify";
-                    TTSMessage = null;
-                });
-            }
+			let tts = new SpeechSynthesisUtterance(Message);
+			tts.voice = SelectedVoice;
+			tts.pitch = Pitch;
+			tts.rate = Rate;
+			Speech.speak(tts);
+
+			tts.addEventListener('end', () => {
+				CurrService = 'Spotify';
+				TTSMessage = null;
+			});
+		}
 	};
 
 	let EventLogs: Event[] = [
@@ -150,54 +150,53 @@
 				// Ready
 				player.addListener('ready', ({ device_id }: any) => {
 					console.log('Ready with Device ID', device_id);
-                                        SpotifyDeviceID = device_id;
+					SpotifyDeviceID = device_id;
 				});
 
 				// Not Ready
 				player.addListener('not_ready', ({ device_id }: any) => {
 					console.log('Device ID has gone offline', device_id);
-                                        SpotifyDeviceID = null;
+					SpotifyDeviceID = null;
 				});
 
-                                // Initialization Error
+				// Initialization Error
 				player.addListener('initialization_error', ({ message }: any) => {
 					console.error(message);
 				});
 
-                                // Authentication Error
+				// Authentication Error
 				player.addListener('authentication_error', ({ message }: any) => {
 					console.error(message);
 				});
 
-                                // Account Error
+				// Account Error
 				player.addListener('account_error', ({ message }: any) => {
 					console.error(message);
 				});
 
-                                // State change
-                                player.addListener('player_state_changed', ({
-                                   position,
-                                   duration,
-                                   track_window: { current_track }
-                                }: any) => {
-                                   console.log('Currently Playing', current_track);
-                                   console.log('Position in Song', position);
-                                   console.log('Duration of Song', duration);
+				// State change
+				player.addListener(
+					'player_state_changed',
+					({ position, duration, track_window: { current_track } }: any) => {
+						console.log('Currently Playing', current_track);
+						console.log('Position in Song', position);
+						console.log('Duration of Song', duration);
 
-                                   Song = {
-                                      Title: current_track.name,
-                                      Album: current_track.album,
-                                      Artists: current_track.artists
-                                   };
-                                });
+						Song = {
+							Title: current_track.name,
+							Album: current_track.album,
+							Artists: current_track.artists
+						};
+					}
+				);
 
-                                // Connect to Spotify
+				// Connect to Spotify
 				player.connect();
 			}
 
-                        WS.on("tts_say", (msg) => {
-                           TTSsay(msg);
-                        });
+			WS.on('tts_say', (msg: string) => {
+				TTSsay(msg);
+			});
 
 			setTimeout(() => {
 				if (WS.connected) {
@@ -227,20 +226,24 @@
 		</div>
 	{:else}
 		<div class="bg-gray-700 p-4 h-50 rounded-md">
-                   <img src={CurrService === "AzidoDJ" ? "/logo.png" : "/Spotify_Logo.png"} alt="Currently Playing" class="{CurrService === "AzidoDJ" ? "h-12 w-12" : "w-32"} rounded-md" />
-                   <div class="p-2" />
-                   
-                   {#if Song}
-                      <img src={Song.Album.images[0].url} alt="Album Cover" />
-                      <h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
-                      <div class="p-2" />
-                      <h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
-                   {/if}
+			<img
+				src={CurrService === 'AzidoDJ' ? '/logo.png' : '/Spotify_Logo.png'}
+				alt="Currently Playing"
+				class="{CurrService === 'AzidoDJ' ? 'h-12 w-12' : 'w-32'} rounded-md"
+			/>
+			<div class="p-2" />
 
-                   {#if TTSMessage}
-                      <h3 class="text-base font-bold text-white">DJ Azido: {TTSMessage}</h3>
-                   {/if}
-                </div>
+			{#if Song}
+				<img src={Song.Album.images[0].url} alt="Album Cover" />
+				<h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
+				<div class="p-2" />
+				<h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
+			{/if}
+
+			{#if TTSMessage}
+				<h3 class="text-base font-bold text-white">DJ Azido: {TTSMessage}</h3>
+			{/if}
+		</div>
 
 		<div class="p-3" />
 
