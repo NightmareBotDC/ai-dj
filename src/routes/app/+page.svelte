@@ -27,6 +27,7 @@
 		Title: string;
 		Album: Album;
 		Artists: Artists[];
+		Duration: number;
 	}
 
 	let Loading: Boolean = true;
@@ -43,6 +44,15 @@
 	let SpotifyDeviceID: String | null = null;
 	let Song: SongData | null = null;
 	let TTSMessage: String | null = 'Waiting for TTS voices.';
+
+	let CurrDuration: number = 0;
+
+	setInterval(() => {
+		if (Song) {
+			if (CurrDuration === Song.Duration) return;
+			else CurrDuration = CurrDuration + 1;
+		} else return;
+	}, 1);
 
 	let TTSsay: Function = (Message: string) => {
 		if (Speech) {
@@ -185,7 +195,8 @@
 						Song = {
 							Title: current_track.name,
 							Album: current_track.album,
-							Artists: current_track.artists
+							Artists: current_track.artists,
+							Duration: duration
 						};
 					}
 				);
@@ -238,6 +249,7 @@
 				<h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
 				<div class="p-2" />
 				<h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
+				<progress max={Song.Duration} value={CurrDuration} />
 			{/if}
 
 			{#if TTSMessage}
