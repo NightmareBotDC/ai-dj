@@ -255,7 +255,9 @@
 				<h1 class="text-2xl font-bold text-white">{Song.Title}</h1>
 				<div class="p-2" />
 				<h3 class="text-base font-bold text-white">{Song.Artists[0].name}</h3>
-				<input type="range" min="0" max={Song.Duration} bind:value={CurrDuration} />
+				<input type="range" min="0" max={Song.Duration} value={CurrDuration} on:change={(o) => {
+                    console.log(o);
+                }} />
 			{/if}
 
 			{#if TTSMessage}
